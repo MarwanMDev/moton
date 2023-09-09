@@ -1,0 +1,166 @@
+.container-show{
+    margin: auto;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    background-color: grey;
+    width: 80%;
+    border-radius: 25px;
+    padding-bottom: 5%;
+}
+
+.container-show h3{
+    padding-top: 2%;
+    padding-right: 2%;
+    color: rgba(23, 63, 95, 1);
+    text-align: right;
+}
+
+.book-name h1{
+    margin: auto;
+    padding-top: 3%;
+    padding-bottom: 5%;
+    text-align: center;
+    color: rgba(23, 63, 95, 1);
+}
+
+.book-details{
+    display: flex;
+    width: 90%;
+    
+    margin: auto;
+    /* margin-bottom: 3%; */
+}
+
+.book-content{
+    /* float: left; */
+   
+    width: 60%;
+    display: inline-block;
+
+}
+
+.book-content h4{
+    text-align: right;
+    padding-top: 3%;
+    padding-right:5% ;
+}
+
+.book-content h2{
+    text-align: right;
+    padding-top: 3%;
+    padding-right:5% ;
+}
+
+.break{
+    border: 1px solid rgb(49, 49, 49);
+    width: 90%;
+    float: right;
+    
+    margin: 2% 0%;
+    margin-right:3% ;
+    
+}
+
+.button{
+    margin-top: 4%;
+}
+
+.button button {
+    width: 90%;
+    display: block;
+    /* margin-left: 10%; */
+    margin-right: 2%;
+    margin-top: 2%;
+    background-color: tomato;
+    color: aliceblue;
+   padding: 3%;
+   border-radius: 12px;
+   border: none;
+   float: right;
+   font-size: larger;
+}
+
+.book-pic{
+    display: inline-block;
+    width: 30%;
+   
+    border-radius: 25px;
+    /* float: right; */
+    margin-bottom:5% ;
+}
+
+.book-pic img{
+    width: 100%;
+    border-radius: 25px;
+}
+
+.description{
+    margin-top:10% ;
+}
+
+.description h3 {
+    display: block;
+    text-align: right;
+    padding-right: 5%;
+   color: rgba(23, 63, 95, 1);
+}
+
+.description h4{
+    text-align: right;
+    padding-top: 3%;
+    padding-right:7% ;
+    padding-bottom: 5%;
+}
+
+
+
+
+
+
+/* Styles for screens with a maximum width of 768 pixels (adjust as needed) */
+@media screen and (max-width: 768px) {
+    .container-show {
+        width: 90%; /* Make the container take the full width on small screens */
+        margin-top: 30%; /* Adjust the top margin for smaller screens */
+        margin-bottom: 10%; /* Adjust the bottom margin for smaller screens */
+        border-radius: 25px; /* Remove border radius on small screens */
+    }
+
+    .book-details {
+       padding-bottom: 5%;
+        flex-direction: column; /* Stack the book details vertically on small screens */
+    }
+
+    .book-pic {
+        width: 60%; /* Make the image take the full width on small screens */
+        margin: auto;
+        margin-bottom: 5%; /* Add some spacing between the image and content */
+    }
+
+    .book-content {
+        width: 100%; /* Make the content take the full width on small screens */
+    }
+
+    .input-container{
+        display: block;
+        width: 100%;
+
+    }
+
+    .button button {
+        display: block;
+        width: 80%; /* Make the button take the full width on small screens */
+       align-items: center;
+        margin: 2% 10%; /* Add vertical margin for button */
+    }
+
+    .description h3 {
+        padding-right: 5%;
+        padding-left: 5%; /* Add some left padding for small screens */
+    }
+
+    .description h4 {
+        padding-right: 7%;
+        padding-left: 7%; /* Add some left padding for small screens */
+    }
+}

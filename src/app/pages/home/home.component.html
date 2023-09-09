@@ -1,0 +1,64 @@
+<div class="moton">
+  <h1>متون للكتب الالكترونية</h1>
+  <div class="search">
+    <input class="form-control" type="text" placeholder="ابحث باسم الكتاب او المؤلف">
+    <i class="icon1 fa-solid fa-magnifying-glass"></i>
+  </div>
+  <div class="buttons">
+
+      <button class="b1" type="button" routerLink="/books/paper">الكتب الورقية</button>
+      <button class="b2" type="button" routerLink="/books/electronic">الكتب الالكترونية</button>
+
+
+  </div>
+
+  </div>
+
+<div class="container">
+  <div class="pic">
+   <img src="../../assets/image/stacked-books-1.jpg">
+  </div>
+  <div class="e-book" >
+    <h5>الكتب الالكترونية - </h5>
+  <h1>الوصول , القراءة , التمرن والانخراط مع المحتوى الرقمي (الكتاب الإلكتروني )</h1>
+
+  <p>"متون هي مكتبة إلكترونية شاملة تقدم مجموعة متنوعة  من الكتب الإلكترونية في جميع المجالات , مع  تجربة مريحة وسهلة للاستكشاف والشراء عبر الانترنت "</p>
+  <button class="btn  btn-lg d-btn " routerLink="/login">اشترك الان</button>
+  </div>
+  </div>
+
+
+
+
+         <div class="new-books">
+            <h2>الكتب حديثة الإصدار</h2>
+            <p>تنشر أكثر من 1000 كتاب يوميا من قبل مئات الكتاب المختلفين.</p>
+
+              <div class="owl"></div>
+              <owl-carousel-o [options]="customOptions" >
+
+             <ng-container *ngFor="let trending of trendingbooks">
+               <ng-template carouselSlide>
+                 <img [src]="trending.image" alt=" category ">
+                  <h5>{{trending.name}}</h5>
+                 <h5>{{trending.type}}</h5>
+                 <h5>{{trending.language}}</h5>
+
+               </ng-template>
+             </ng-container>
+
+           </owl-carousel-o>
+           <div ></div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
