@@ -1,0 +1,505 @@
+
+
+.books{
+    height: 100vh;
+    justify-content: center;
+    background-image: url(../../../assets/image/R.jpeg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover ;
+}
+
+.books h1{
+    padding-top: 20%;
+    padding-left: 45%;
+    color: aliceblue;
+    font-size: 600;
+    font-weight: bold;
+}
+
+
+
+.search {
+
+    width: 80%;
+    margin: auto;
+    margin-top: 5%;
+    position: relative;
+  }
+
+  .search input{
+    padding: 1%;
+      width: 50%;
+      margin: auto;
+      margin-top: 5%;
+     text-align: right;
+  }
+
+  .search i{
+      position: absolute;
+      left: 28%;
+      top: 36%;
+  }
+/*
+.books input{
+    margin-top: 5%;
+    width: 40%;
+   margin-left: 30%;
+   text-align: right;
+
+}
+
+.books i {
+    color: grey;
+    position: absolute;
+    left: 32%;
+    top: 78.5%;
+} */
+
+
+.text{
+    width: 40%;
+    margin: auto;
+   margin-top: 5%;
+    justify-content: center;
+    display: flex;
+}
+
+.text p{
+    /* padding-left: 30%;
+    padding-top: 5%; */
+
+    font-size: larger;
+    color: aliceblue;
+}
+
+ .enjoy{
+    display: flex;
+    height: 60%;
+    width: 80%;
+    margin: auto;
+    margin-top: 7%;
+
+
+}
+
+.pic{
+
+background-color: tomato;
+width: 49%;
+}
+
+.pic img{
+    width: 100%;
+    height: 100%;
+
+}
+
+.more{
+    width: 49.999%;
+    text-align: right;
+
+}
+
+.more h1{
+    margin-top: 9%;
+    color: rgb(14, 14, 89)
+}
+
+.more p{
+    color: rgb(75, 72, 72);
+    font-weight: bold;
+    font-size: x-large;
+}
+
+/* .more button{
+    width: 40%;
+    height: 8%;
+    margin-left: 60%;
+    margin-top: 20%;
+    background-color: tomato;
+    border: none;
+    color: aliceblue;
+
+} */
+
+
+
+
+
+
+
+.arabic{
+    width: 80%;
+    height: auto;
+    margin: auto;
+    margin-top: 20%;
+    /* width: 100%; */
+    background-color: rgb(249, 245, 245);
+
+}
+
+.arabic h1{
+     font-size:50px;
+    font-weight: bold;
+    color: rgb(14, 14, 89);
+    /* padding-left: 40%; */
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 3%;
+}
+
+
+
+
+
+.english{
+   width: 80%;
+   margin: auto;
+    height: auto;
+    margin-top: 10%;
+    background-color: rgb(249, 245, 245);
+
+}
+
+
+.owl-carousel .owl-item {
+    margin: 0 10px; /* Adjust the margin as needed */
+  }
+
+
+.english h1{
+    font-size:50px;
+    font-weight: bold;
+    color: rgb(14, 14, 89);
+    /* padding-left: 40%; */
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 3%;
+}
+
+.slide-container{
+    width: 100%;
+     position: relative;
+     cursor: pointer;
+
+ }
+
+ .slide-container img{
+     width: 100%;
+    border-radius: 25px;
+ }
+
+ .slide-content{
+     width: 100%;
+
+     position: absolute;
+     top: 30%;
+     margin: auto;
+
+ }
+
+ .slide-content h1{
+     /* padding-left: 3%; */
+
+ text-align: center;
+ }
+
+.know{
+    height: auto;
+    margin-top: 10%;
+   margin-bottom: 5%;
+}
+
+.know h1{
+    font-size:50px;
+    font-weight: bold;
+    color: rgb(14, 14, 89);
+    /* padding-left: 40%; */
+    text-align: center;
+}
+
+.ss{
+    border: 1px solid rgb(14, 14, 89);
+    width: 18%;
+    height: 0.5%;
+    background-color: rgb(14, 14, 89);
+   margin: auto;
+   margin-top: 3%;
+
+}
+
+.know p{
+    color: rgb(75, 72, 72);
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 30%;
+    margin-top: 2%;
+}
+
+.know button{
+    width: 20%;
+    display: inline-block;
+    margin-left: 42%;
+    margin-top: 2%;
+    background-color: tomato;
+    color: aliceblue;
+   padding: 1%;
+   border-radius: 25px;
+}
+
+.know a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+
+
+.button1{
+    margin:10%  30%;
+    width: 30%;
+    height: 10%;
+    background-color: tomato;
+    color: aliceblue;
+    border: none;
+    border-radius: 25px;
+
+}
+
+
+@media (max-width: 768px) {
+    .books{
+
+      background-size: cover ;
+
+    }
+    .books h1 {
+
+      margin-top: 5%;
+      font-size: 40px; /* Decrease the font size for the header */
+    }
+
+    .text{
+        width: 80%;
+        text-align: right;
+    }
+
+    .search {
+
+      margin-top: 20%;
+      width: 80%;
+    }
+
+    .search input {
+      padding: 3%;
+      width: 100%; /* Increase the input width */
+    }
+
+    .search i {
+      left: 5%; /* Adjust the icon position */
+    }
+
+
+
+    .enjoy {
+      margin-top: 10%;
+      width: 100%;
+      flex-direction: column; /* Stack the elements on smaller screens */
+      align-items: center; /* Center-align content */
+    }
+
+    .pic{
+      margin-bottom: 5%;
+      width: 90%; /* Full width for both columns */
+    }
+
+
+    .more{
+        width: 90%;
+        margin: auto;
+    }
+
+    .button1{
+        width: 50%;
+       padding: 3%;
+    }
+
+    .arabic{
+        width: 100%;
+    }
+
+
+
+  .arabic h1{
+    text-align: center;
+    padding-left: 0%;
+  }
+
+    .e-text h1{
+
+    text-align: end;
+    text-align: center;
+    padding-left: 0%;
+   }
+
+   .english{
+    width: 100%;
+   }
+
+
+    .know{
+        /* width: 100%; */
+
+        justify-content: center;
+        padding-bottom: 5%;
+        padding-top: 5%;
+    }
+
+    .know h1{
+        font-size: 40px;
+     text-align: center;
+     padding-left: 0%;
+    }
+
+    .ss{
+        width: 40%;
+        margin: auto;
+        margin-top: 5%;
+    }
+
+    .know p{
+        text-align: center;
+        margin-left: 0%;
+    }
+
+    .know button{
+        display: block;
+        width: 40%;
+        margin: auto;
+
+        /* margin-left: 0%; */
+
+    }
+
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1100px) {
+
+    .books{
+
+        background-size: cover ;
+
+      }
+      .books h1 {
+
+        margin-top: 2%;
+        font-size: 40px; /* Decrease the font size for the header */
+      }
+
+      .text{
+          width: 80%;
+          text-align: right;
+      }
+
+      .search {
+
+        margin-top: 10%;
+        width: 80%;
+      }
+
+      .search input {
+        padding: 3%;
+        width: 100%; /* Increase the input width */
+      }
+
+      .search i {
+        left: 5%; /* Adjust the icon position */
+      }
+
+
+
+      .enjoy {
+        margin-top: 10%;
+        width: 100%;
+        flex-direction: column; /* Stack the elements on smaller screens */
+        align-items: center; /* Center-align content */
+      }
+
+      .pic{
+        margin-bottom: 5%;
+        width: 90%; /* Full width for both columns */
+      }
+
+
+      .more{
+          width: 90%;
+          margin: auto;
+      }
+
+      .button1{
+          width: 50%;
+         padding: 3%;
+      }
+
+      .arabic{
+
+            width: 100%;
+            margin-top: 15%;
+          }
+
+
+
+
+    .arabic h1{
+      text-align: center;
+      padding-left: 0%;
+    }
+
+      .e-text h1{
+
+      text-align: end;
+      text-align: center;
+      padding-left: 0%;
+     }
+
+     .english{
+        width: 100%;
+        margin-top: 15%;
+     }
+
+
+      .know{
+          /* width: 100%; */
+
+          justify-content: center;
+          padding-bottom: 5%;
+          padding-top: 5%;
+      }
+
+      .know h1{
+          font-size: 40px;
+       text-align: center;
+       padding-left: 0%;
+      }
+
+      .ss{
+          width: 40%;
+          margin: auto;
+          margin-top: 5%;
+      }
+
+      .know p{
+          text-align: center;
+          margin-left: 0%;
+      }
+
+      .know button{
+          display: block;
+          width: 40%;
+          margin: auto;
+
+          /* margin-left: 0%; */
+
+      }
+
+  }

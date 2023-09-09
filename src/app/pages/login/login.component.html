@@ -1,0 +1,30 @@
+<!-- <form>
+    <input type="text" placeholder="البريد الالكتروني">
+    <input type="password" placeholder="*******">
+    <button type="submit"class="btn btn-danger">اضف الان </button>
+</form> -->
+
+
+
+
+<div>
+    <form (ngSubmit)="handelLogin(login_form)" [formGroup]="login_form">
+   
+
+    
+
+     
+        <input type="text"   class="form-control" formControlName="email"  placeholder="البريد الالكتروني">
+         
+
+      <input type="password"   class="form-control" formControlName="password"  placeholder="كلمة السر">
+       
+   
+    <button [disabled]="login_form.invalid" type="submit"  class="btn  btn-lg d-btn  btn-secondary  " >اضف الان </button>
+ 
+
+  
+
+
+</form>
+</div>

@@ -1,0 +1,206 @@
+<div class="cart" [ngClass]="{ 'closed': cartClosed }">
+    <div class="shopping">
+
+        <!-- ... (rest of your cart content) -->
+        <i class="fa-solid fa-xmark" (click)="toggleCart()"></i>
+        <!-- ... (rest of your cart content) -->
+
+      <!-- <i class="fa-solid fa-xmark" (click)="closecart()"></i> -->
+      <h3>عربة التسوق</h3>
+    </div>
+
+    <div class="book-ngfor"  *ngFor="let books of newBooks">
+    <div class="container-show color ">
+
+          <div class="book-name">
+
+
+
+
+
+            <div class="delete-icon">
+              <i class="fa-regular fa-trash-can" (click)="onDeleteData(books._id)" ></i>
+            </div>
+
+              <div class="book-details">
+                  <div class="book-content">
+
+                      <h2>{{ books.name }}  </h2>
+
+                      <h4>{{ books.type }} : ج.م</h4>
+
+
+
+
+
+                      <div class="button input-container">
+
+                          <input type="number" id="numberInput" class="styled-input" placeholder="العدد">
+                      </div>
+
+
+                  </div>
+                  <div class="book-pic">
+
+                  <img  [src]="books.image" alt=" category ">
+                  </div>
+
+
+
+
+              </div>
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+    </div>
+
+    <div class="break"></div>
+    <div class="cart-total">
+      <div class="cart-price">ج.م 660</div>
+      <div class="total">
+        <h5>: المجموع</h5>
+      </div>
+
+    </div>
+    <div class="break"></div>
+    <div class="style-btn">
+      <button class=" button1"  routerLink="/cart"> انشاء طلب</button>
+      <button class="  button2"  routerLink="/cart"> متابعة التسوق</button>
+    </div>
+    <div class="recycle">
+      <button class="recycle-btn btn btn-danger" (click)="onDeleteallData()" >
+        <i class="fa-regular fa-trash-can"></i>
+        <h5>افراغ السلة</h5>
+      </button>
+
+
+    </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="news">
+        <h1>روايات</h1>
+        <div class="text">
+          <p>يضم هذا القسم الكتب الافضل والاكثر ترويجا , استكشف مجموعتنا الاستثنائية من الكتب الاكثر مبيعا وشهرة في هذا القسم المميز</p>
+
+        </div>
+        <div class="search">
+          <input class="form-control" type="text" placeholder="ابحث باسم الكتاب او المؤلف">
+        <i class="icon1 fa-solid fa-magnifying-glass"></i>
+
+        </div>
+
+        </div>
+        <div class="news-books">
+
+         <div class="news-books1">
+           <div class="books1-details" *ngFor="let nbooks of newBooks">
+               <div class="books2-details">
+                <div class="price">
+                  <h6>ج.م 50</h6>
+                </div>
+                <a routerLink="/category/english/show/{{nbooks._id}}">
+                  <img class="w-100" [src]="nbooks.image" alt=" category ">
+                </a>
+                <div class="stars">
+                <i class="fa-regular fa-star"  [class.starred]="nbooks.isStarred"
+                [class.unstarred]="!nbooks.isStarred"
+                (click)="toggleStar(nbooks)"
+                ></i>
+                <i class="fa-regular fa-star"  [class.starred]="nbooks.isStarred"
+                [class.unstarred]="!nbooks.isStarred"
+                (click)="toggleStar(nbooks)"></i>
+                <i class="fa-regular fa-star"  [class.starred]="nbooks.isStarred"
+                [class.unstarred]="!nbooks.isStarred"
+                (click)="toggleStar(nbooks)"></i>
+                <i class="fa-regular fa-star" [class.starred]="nbooks.isStarred"
+                [class.unstarred]="!nbooks.isStarred"
+                (click)="toggleStar(nbooks)"></i>
+                <i class="fa-regular fa-star" [class.starred]="nbooks.isStarred"
+                [class.unstarred]="!nbooks.isStarred"
+                (click)="toggleStar(nbooks)" ></i>
+                </div>
+
+
+                <div class="heart">
+                  <i class="fa-regular fa-heart"  [class.hearted]="nbooks.isHearted"
+                  [class.unhearted]="!nbooks.isHearted"
+                  (click)="toggleHeart(nbooks)"></i>
+                </div>
+
+                <div class="content">
+                  <h5>{{nbooks.name}}</h5>
+                  <h5>{{nbooks.type}}</h5>
+                  <h5>{{nbooks.language}}</h5>
+                </div>
+
+               <button class=" button1" routerLink="/cart">اضف الى السلة</button>
+               </div>
+               </div>
+         </div>
+         <div class="news-books2">
+            <h5>كتب عربية</h5>
+            <a>روايات</a>
+
+            <a>شعر</a>
+
+            <a>مترجمات</a>
+
+            <a>تاريخ</a>
+
+            <a>فلسفة</a>
+
+            <a>قصص قصيرة</a>
+
+            <a>كتب دينية</a>
+
+            <a>فكر</a>
+
+            <a>دراسات</a>
+
+            <a>تنمية بشرية</a>
+
+            <a>مقالات</a>
+
+            <a>فن الطبخ</a>
+
+            <a>ادارة واقتصاد</a>
+
+            <a>ادب رسائل</a>
+
+            <a>مسرحيات</a>
+
+            <a>كتب طبية</a>
+
+            <a>كتب النقد</a>
+
+            <a>كتب القانون</a>
+
+            <a>كتب الترفيه</a>
+         </div>
+        </div>
+
+
+
