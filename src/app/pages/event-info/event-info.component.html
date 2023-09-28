@@ -1,0 +1,61 @@
+<div class="p-5" style="height: 100vh">
+  <div class="card text-center">
+    <div class="card-title my-5">
+      <h1>مناقشة كتاب شروط النهضة</h1>
+    </div>
+    <div class="card-body">
+      <div class="d-flex justify-content-center gx-5 px-5">
+        <div class="col">
+          <div class="mb-5">
+            <button
+              class="btn w-75 p-4"
+              [routerLink]="['/event-info']"
+              style="
+                background-color: #ec553b;
+                color: #ffffff;
+                border-radius: 10px;
+              "
+            >
+              {{ 'home.event_closed' | transloco }}
+            </button>
+          </div>
+          <hr />
+          <div class="mb-5">
+            <p style="text-align: justify">
+              متون هي مكتبة إلكترونية شاملة وموثوقة توفر أكثر من
+              10,000 كتابا إلكترونيا للاستكشاف والاستمتاع.اكتشف
+              تشكيلتنا المتنوعة من الروايات والكتب الأكاديمية والتنمية
+              الشخصية والادب الكلاسيكي وغيرها الكثير.استمتع بتجربة
+              قراءة سهلة ومريحة على جميع الاجهزة واستفد من العروض
+              والتخفيضات الحصرية.أشتر الأن واحصل على وصول فوري لعالم
+              ملئ بالمعرفة والتسلية.
+            </p>
+          </div>
+          <hr />
+        </div>
+        <div class="col">
+          <img
+            src="https://source.unsplash.com/collection/190727/300x300"
+            alt="cover"
+            style="
+              width: 75%;
+              height: 75%;
+              object-fit: cover;
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center;
+            "
+          />
+        </div>
+      </div>
+      <div class="text-end px-5">
+        <h6>{{ 'home.date' | transloco }}</h6>
+        <p></p>
+        <h6>{{ 'home.location' | transloco }}</h6>
+        <p></p>
+        <h6>{{ 'home.more_information' | transloco }}</h6>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</div>

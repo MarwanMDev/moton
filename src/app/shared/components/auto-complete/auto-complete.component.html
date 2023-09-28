@@ -1,0 +1,15 @@
+<div class="container w-50">
+  <input
+    class="form-control p-3"
+    list="datalistOptions"
+    id="dataList"
+    placeholder="{{ 'home.search_placeholder' | transloco }}"
+    (change)="bookNameValue($any($event.target).value)"
+  />
+  <datalist id="datalistOptions" style="width: 100%">
+    <option
+      *ngFor="let book of books"
+      [value]="book.bookName"
+    ></option>
+  </datalist>
+</div>

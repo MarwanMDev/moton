@@ -1,0 +1,55 @@
+<div class="transition-item">
+  <div class="image-item">
+    <img
+      src="../../../assets/image/5686403.webp"
+      style="height: 100vh"
+    />
+  </div>
+  <div class="category-caption">
+    <h1 style="font-size: 4rem; color: #ffffff">
+      {{ 'navigation.contact_us' | transloco }}
+    </h1>
+  </div>
+</div>
+
+<form
+  (ngSubmit)="handelContactForm(contactForm)"
+  [formGroup]="contactForm"
+  class="contact-data"
+>
+  <input
+    class="form-control"
+    type="text"
+    placeholder="{{ 'sign_up.name' | transloco }}"
+  />
+  <br />
+  <input
+    class="form-control"
+    type="text"
+    placeholder="{{ 'home.phone_number' | transloco }}"
+  />
+  <br />
+  <input
+    class="form-control"
+    type="email"
+    placeholder="{{ 'sign_up.email_address' | transloco }}"
+  />
+  <br />
+  <textarea
+    class="form-control"
+    rows="10"
+    placeholder="{{ 'home.message' | transloco }}"
+  ></textarea>
+  <br />
+  <div class="but">
+    <button
+      type="submit"
+      class="btn btn-lg d-btn"
+      style="background-color: #ec553b; color: #ffffff"
+      [disabled]="contactForm.invalid"
+    >
+      {{ 'login.send' | transloco }}
+    </button>
+         
+  </div>
+</form>

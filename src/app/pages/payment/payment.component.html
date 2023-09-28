@@ -1,0 +1,129 @@
+<div class="d-flex justify-content-center pt-5">
+  <h1 style="font-size: 4rem; color: #294d6b">
+    {{ 'home.complete_your_order' | transloco }}
+  </h1>
+</div>
+<div class="container mb-5" dir="ltr" style="font-family: 'Roboto'">
+  <div class="card p-5">
+    <div class="d-flex p-1 mt-1">
+      <div
+        class="form-check"
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+        "
+      >
+        <input
+          class="form-check-input"
+          type="radio"
+          name="paypal"
+          id="paypal"
+        />
+        <label class="form-check-label" for="paypal">
+          <img
+            src="../../../assets/image/paypal-logo.png"
+            alt="paypal"
+            style="width: 5rem"
+          />
+        </label>
+      </div>
+    </div>
+    <hr />
+    <div class="d-flex justify-content-between p-1 mt-4">
+      <div class="">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="credit"
+            id="credit"
+            checked
+          />
+          <label class="form-check-label" for="credit">
+            Credit Or Debit Card
+          </label>
+        </div>
+      </div>
+      <div class="">
+        <div class="d-flex gap-2">
+          <i class="fa-brands fa-cc-visa fa-xl mr-2"></i>
+          <i class="fa-brands fa-cc-mastercard fa-xl"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="row my-4">
+      <div class="col-sm-12">
+        <div class="form-group col-sm-6">
+          <label for="ccnumber" style="font-size: 0.9rem"
+            >Credit Card Number</label
+          >
+
+          <div class="input-group mt-4">
+            <input
+              id="ccnumber"
+              class="form-control"
+              type="number"
+              placeholder="0000 0000 0000 0000"
+            />
+
+            <!-- <div class="input-group-append mt-2">
+              <i class="card fa-solid fa-credit-card fa-xl"></i>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row my-4">
+      <div class="form-group col-sm-3">
+        <label for="ccyear" style="font-size: 0.9rem"
+          >Expiry Date</label
+        >
+        <select class="form-control mt-2" id="ccyear">
+          <option>2014</option>
+          <option>2015</option>
+          <option>2016</option>
+          <option>2017</option>
+          <option>2018</option>
+          <option>2019</option>
+          <option>2020</option>
+          <option>2021</option>
+          <option>2022</option>
+          <option>2023</option>
+          <option>2024</option>
+          <option>2025</option>
+        </select>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="cvv" style="font-size: 0.9rem">CVV/CVC</label>
+          <input
+            class="form-control mt-2"
+            id="cvv"
+            type="text"
+            placeholder="123"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="d-flex gap-2">
+      <i class="fa-solid fa-lock"></i>
+      <p style="font-size: 0.7rem">
+        Your transaction is secured by SLL Encryption
+      </p>
+    </div>
+
+    <div class="d-flex">
+      <button
+        class="btn w-25"
+        style="background-color: #ec553b; color: #ffffff"
+      >
+        Continue
+      </button>
+    </div>
+  </div>
+</div>
