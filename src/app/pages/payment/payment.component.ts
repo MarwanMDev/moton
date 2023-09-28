@@ -11,6 +11,8 @@ import { CartService } from 'src/app/services/cart/cart.service';
 export class PaymentComponent implements OnInit {
   private route = inject(ActivatedRoute);
   cartId$ = this.route.params.pipe(map((params) => params['cartId']));
+  isChecked: boolean = true;
+  payment: any;
 
   constructor(private cartService: CartService) {}
 

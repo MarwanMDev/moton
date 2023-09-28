@@ -66,7 +66,7 @@
     <div class="container pb-5 mt-0">
       <div class="card-group m-1 card-group-scroll">
         <div
-          class="card p-2"
+          class="card p-2 shadow"
           style="cursor: pointer; min-height: 20rem"
           *ngFor="let book of books; let i = index"
         >
@@ -74,8 +74,29 @@
             <img
               src="https://source.unsplash.com/collection/190727/600x800"
               class="card-img-top"
+              style="filter: brightness(25%)"
               alt="..."
             />
+            <p
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-center;
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                width: 100%;
+                text-align: center;
+                transform: translate(-50%, -50%);
+                text-decoration: none;
+                color: #ffffff;
+                font-family: 'Roboto';
+                font-weight: 700;
+                font-size: 1.4rem;
+              "
+            >
+              {{ book.category.name }}
+            </p>
           </a>
           <div class="card-body text-center">
             <h5 class="card-title">{{ book.bookName }}</h5>
@@ -111,7 +132,7 @@
     <div class="container pb-5 mt-0">
       <div class="card-group m-1 card-group-scroll">
         <div
-          class="card p-2"
+          class="card p-2 shadow"
           style="cursor: pointer; min-height: 20rem"
           *ngFor="let book of books; let i = index"
         >
@@ -119,8 +140,29 @@
             <img
               src="https://source.unsplash.com/collection/190727/600x800"
               class="card-img-top"
+              style="filter: brightness(25%)"
               alt="..."
             />
+            <p
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-center;
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                width: 100%;
+                text-align: center;
+                transform: translate(-50%, -50%);
+                text-decoration: none;
+                color: #ffffff;
+                font-family: 'Roboto';
+                font-weight: 700;
+                font-size: 1.4rem;
+              "
+            >
+              {{ book.category.name }}
+            </p>
           </a>
           <div class="card-body text-center">
             <h5 class="card-title">{{ book.bookName }}</h5>
