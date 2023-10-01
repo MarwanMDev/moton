@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event/event.service';
+import { Event } from 'src/app/interfaces/event';
 
 @Component({
   selector: 'app-events',
@@ -12,7 +13,7 @@ export class EventsComponent implements OnInit {
   constructor(private eventService: EventService) {}
   ngOnInit(): void {
     this.eventService.getAllEvents().subscribe({
-      next: (response) => {
+      next: (response: any) => {
         this.events = response.data;
       },
       error: (err) => {

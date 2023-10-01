@@ -63,7 +63,25 @@
     <h2 class="text-center my-4" style="font-weight: 700">
       {{ 'navigation.arabic_books' | transloco }}
     </h2>
-    <div class="container pb-5 mt-0">
+    <div
+      *ngIf="isLoading"
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      "
+      class="mb-5"
+    >
+      <div
+        class="spinner-border"
+        role="status"
+        style="color: #ec553b"
+      >
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div class="container pb-5 mt-0" *ngIf="!isLoading">
       <div class="card-group m-1 card-group-scroll">
         <div
           class="card p-2 shadow"
@@ -129,7 +147,25 @@
     <h2 class="text-center my-4" style="font-weight: 700">
       {{ 'navigation.english_books' | transloco }}
     </h2>
-    <div class="container pb-5 mt-0">
+    <div
+      *ngIf="isLoading"
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      "
+      class="mb-5"
+    >
+      <div
+        class="spinner-border"
+        role="status"
+        style="color: #ec553b"
+      >
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div class="container pb-5 mt-0" *ngIf="!isLoading">
       <div class="card-group m-1 card-group-scroll">
         <div
           class="card p-2 shadow"

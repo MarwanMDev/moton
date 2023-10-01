@@ -11,14 +11,47 @@ const BASE_URL = environment.apiURL;
 export class OrderService {
   constructor(private client: HttpClient) {}
 
+  getAllOrders(): Observable<any> {
+    return this.client.get(BASE_URL + 'order');
+  }
+
   getSpecificOrder(id: string): Observable<any> {
     return this.client.get(BASE_URL + `order/${id}`);
   }
 
   createCashOrder(
     cartId: string,
-    orderData: object
+    shippingAddress: string
   ): Observable<any> {
-    return this.client.post(BASE_URL + `order/${cartId}`, orderData);
+    return this.client.post(
+      BASE_URL + `order/${cartId}`,
+      shippingAddress
+    );
+  }
+
+  checkoutSession(
+    cartId: string,
+    paymentGateway: string
+  ): Observable<any> {
+    return this.client.get(
+      BASE_URL +
+        `order/checkout-session/${cartId}?payment_getaway=${paymentGateway}`
+    );
+  }
+
+  createPaypalOrder(paymentId: any): Observable<any> {
+    return this.client.get(
+      BASE_URL + `order/create-paypal-order?paymentId=${paymentId}`
+    );
+  }
+
+  createPaymobOrder(
+    transactionId: any,
+    orderId: any
+  ): Observable<any> {
+    return this.client.get(
+      BASE_URL +
+        `order/create-paymob-order?transactionId=${transactionId}&orderId=${orderId}`
+    );
   }
 }

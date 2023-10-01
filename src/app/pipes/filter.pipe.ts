@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, inject } from '@angular/core';
 import { Book } from '../interfaces/book';
 
 @Pipe({ name: 'appFilter' })
@@ -10,17 +10,15 @@ export class FilterPipe implements PipeTransform {
    * @param keyword search string
    * @returns list of elements filtered by search text or []
    */
-  transform(books: Book[], keyword: string): Book[] {
-    if (!books) {
+  transform(items: any[], field: string, value: string): any[] {
+    if (!items) {
       return [];
     }
-    if (!keyword) {
-      return books;
+    if (!field || !value) {
+      return items;
     }
-    keyword = keyword.toLocaleLowerCase();
-
-    return books.filter((book) => {
-      return book.bookName.toLocaleLowerCase().includes(keyword);
-    });
+    return items.filter((singleItem) =>
+      singleItem[field].toLowerCase().includes(value.toLowerCase())
+    );
   }
 }

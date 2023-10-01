@@ -18,6 +18,11 @@ export class NavbarComponent implements OnInit {
       {
         _id: '',
         book: '',
+        bookDetails: {
+          bookName: '',
+          image: '',
+          type: '',
+        },
         price: 0,
         quantity: 0,
       },
@@ -73,6 +78,11 @@ export class NavbarComponent implements OnInit {
           {
             _id: '',
             book: '',
+            bookDetails: {
+              bookName: '',
+              image: '',
+              type: '',
+            },
             price: 0,
             quantity: 0,
           },
@@ -83,23 +93,52 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  increment(value: any, i: any) {
+  increment(value: any, i: any, itemId: string) {
     const initValue = 0;
+    let finalValue: number;
     if (value != null) {
       const afterClick = value + 1;
+
+      finalValue = this.cart.cartItems[i].quantity = afterClick;
+      this.cartService
+        .updateUserCart(itemId, finalValue)
+        .subscribe((response) => {
+          this.cart = response.data;
+        });
       return (this.cart.cartItems[i].quantity = afterClick);
     } else {
+      finalValue = this.cart.cartItems[i].quantity = initValue + 1;
+      this.cartService
+        .updateUserCart(itemId, finalValue)
+        .subscribe((response) => {
+          this.cart = response.data;
+        });
       return (this.cart.cartItems[i].quantity = initValue + 1);
     }
   }
 
-  decrement(value: any, i: any) {
+  decrement(value: any, i: any, itemId: string) {
     const initValue = 1;
+    let finalValue: number;
+
     if (value > 1) {
       const afterClick = value - 1;
+
+      finalValue = this.cart.cartItems[i].quantity = afterClick;
+      this.cartService
+        .updateUserCart(itemId, finalValue)
+        .subscribe((response) => {
+          this.cart = response.data;
+        });
       return (this.cart.cartItems[i].quantity = afterClick);
     } else {
-      return (this.cart.cartItems[i].quantity = initValue - 1);
+      finalValue = this.cart.cartItems[i].quantity = initValue;
+      this.cartService
+        .updateUserCart(itemId, finalValue)
+        .subscribe((response) => {
+          this.cart = response.data;
+        });
+      return (this.cart.cartItems[i].quantity = initValue);
     }
   }
 

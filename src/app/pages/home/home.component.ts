@@ -8,13 +8,22 @@ import { Book } from 'src/app/interfaces/book';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  isLoading: boolean = false;
   public books: Book[] | undefined;
 
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.booksService.getAllBooks().subscribe((res) => {
+      this.isLoading = false;
       this.books = res.data;
+      this.books?.sort((a, b) => {
+        return (
+          <any>new Date(b.createdAt) - <any>new Date(a.createdAt)
+        );
+      });
+      this.books = this.books?.slice(0, 10);
     });
   }
 }

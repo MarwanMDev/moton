@@ -12,7 +12,7 @@ import { BooksService } from 'src/app/services/books/books.service';
 export class BooksComponent implements OnInit {
   private route = inject(ActivatedRoute);
   type$ = this.route.params.pipe(map((params) => params['type']));
-
+  isLoading: boolean = false;
   books: Book[] = [];
 
   constructor(private bookService: BooksService) {}
@@ -20,10 +20,17 @@ export class BooksComponent implements OnInit {
   categoryName: any;
 
   ngOnInit(): void {
+    this.isLoading = true;
+
     this.type$.subscribe((type) => {
-      if (!type) return;
+      if (!type) {
+        this.isLoading = false;
+        return;
+      }
 
       this.bookService.getAllBooks().subscribe((res) => {
+        this.isLoading = false;
+
         this.books = res.data;
         this.books = this.books?.filter((b) => b.type === type);
       });

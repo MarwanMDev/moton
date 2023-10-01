@@ -8,6 +8,7 @@
   </div>
   <div class="search">
     <input
+      id="keyword"
       class="form-control"
       type="text"
       [(ngModel)]="keyword"
@@ -21,16 +22,6 @@
   <div class="card" style="border: none; background-color: #ffffff">
     <div class="card-body">
       <div class="d-flex justify-content-end mx-2">
-        <!-- <button
-          class="btn"
-          style="
-            background-color: #ec553b;
-            color: #ffffff;
-            width: fit-content;
-          "
-        >
-          {{ 'home.sort_by' | transloco }}
-        </button> -->
         <select
           #sortSelect
           id="sortSelect"
@@ -50,7 +41,7 @@
           </option>
         </select>
       </div>
-      <div class="d-flex flex-row mt-2">
+      <div class="d-flex flex-row mt-2" style="min-height: 20rem">
         <div class="col-lg-3">
           <div>
             <p style="font-weight: 600">
@@ -63,11 +54,9 @@
                 *ngFor="let category of categories; let i = index"
                 style="display: flex; flex-direction: row; gap: 1px"
               >
-                <!-- <a href="#" style="text-decoration: none">{{
-                  category.name
-                }}</a> -->
                 <input
                   #checkBox
+                  id="cat"
                   type="checkbox"
                   value="{{ category.name }}"
                   id="{{ category.name }}"
@@ -77,13 +66,33 @@
                       checkBox.checked
                     )
                   "
-                /><label for="fruit">{{ category.name }}</label>
+                /><label for="{{ category.name }}">{{
+                  category.name
+                }}</label>
               </li>
             </ul>
           </div>
         </div>
         <div class="col-lg-9">
-          <div class="container">
+          <div
+            *ngIf="isLoading"
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              height: 100%;
+            "
+          >
+            <div
+              class="spinner-border"
+              role="status"
+              style="color: #ec553b"
+            >
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+          <div class="container" *ngIf="!isLoading">
             <div class="row" *ngIf="!books?.length">
               {{ 'home.no_books_found' | transloco }}
             </div>
@@ -92,9 +101,14 @@
                 class="col"
                 *ngFor="
                   let book of books
-                    | appFilter : keyword
+                    | appFilter : 'bookName' : keyword
                     | sort : 'asc' : sortValue
                     | category : filters
+                    | paginate
+                      : {
+                          itemsPerPage: 12,
+                          currentPage: pagination,
+                        }; let i = index
                 "
               >
                 <div class="card">
@@ -143,7 +157,13 @@
                         >
                           {{ book.bookName }}
                         </p>
-                        <p class="m-0" style="font-family: 'Roboto'">
+                        <p
+                          class="m-0"
+                          style="
+                            font-family: 'Roboto';
+                            font-size: 0.8rem;
+                          "
+                        >
                           {{ book.authorName }}
                         </p>
                       </div>
@@ -175,7 +195,7 @@
                     </div>
                     <button
                       *ngIf="isLoggedIn"
-                      (click)="addToCart(book._id)"
+                      (click)="addToCart(book._id, i)"
                       type="button"
                       class="btn w-100"
                       style="
@@ -191,6 +211,11 @@
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <pagination-controls
+          (pageChange)="renderPage($event)"
+        ></pagination-controls>
       </div>
     </div>
   </div>

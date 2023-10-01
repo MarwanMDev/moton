@@ -5,7 +5,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { TranslocoRootModule } from '../transloco-root.module';
 import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
-import { StarRatingComponent } from './components/star-rating/star-rating.component';
 
 @NgModule({
   declarations: [

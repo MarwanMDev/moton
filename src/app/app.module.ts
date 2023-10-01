@@ -28,7 +28,6 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { CartService } from './services/cart/cart.service';
 import { AuthInterceptor } from './auth.interceptor';
 import { ToastrModule } from 'ngx-toastr';
-import { EventFormService } from './services/event/event-form.service';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileService } from './services/profile/profile.service';
@@ -39,6 +38,15 @@ import { SortPipe } from './pipes/sort.pipe';
 import { CategoryPipe } from './pipes/category.pipe';
 import { PasswordValidationComponent } from './pages/password-validation/password-validation.component';
 import { VerifyResetPasswordCodeComponent } from './pages/verify-reset-password-code/verify-reset-password-code.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { StarRatingModule } from 'angular-star-rating';
+import { ReviewService } from './services/review/review.service';
+import { OrderService } from './services/order/order.service';
+import { OrderComponent } from './pages/order/order.component';
+import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
+import { PaymentCompletedComponent } from './pages/payment-completed/payment-completed.component';
+import { ViewPdfComponent } from './pages/view-pdf/view-pdf.component';
+import { PaymobPaymentSuccessComponent } from './pages/paymob-payment-success/paymob-payment-success.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +72,11 @@ import { VerifyResetPasswordCodeComponent } from './pages/verify-reset-password-
     CategoryPipe,
     PasswordValidationComponent,
     VerifyResetPasswordCodeComponent,
+    OrderComponent,
+    PaymentSuccessComponent,
+    PaymentCompletedComponent,
+    ViewPdfComponent,
+    PaymobPaymentSuccessComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,16 +89,12 @@ import { VerifyResetPasswordCodeComponent } from './pages/verify-reset-password-
     SharedModule,
     TranslocoRootModule,
     GoogleMapsModule,
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(),
+    NgxPaginationModule,
+    StarRatingModule.forRoot(),
   ],
   providers: [
     CartService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
-    EventFormService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
@@ -97,7 +106,20 @@ import { VerifyResetPasswordCodeComponent } from './pages/verify-reset-password-
       useClass: AuthInterceptor,
       multi: true,
     },
+    ReviewService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    OrderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
     SortPipe,
+    FilterPipe,
   ],
   bootstrap: [AppComponent],
 })

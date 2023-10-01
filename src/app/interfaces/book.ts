@@ -8,6 +8,7 @@ export interface Book {
   createdAt: string;
   delivaryPrice: number;
   description: string;
+  pdf: string;
   editionOfBook: string;
   image: string;
   language: string;

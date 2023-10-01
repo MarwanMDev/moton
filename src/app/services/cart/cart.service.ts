@@ -15,6 +15,12 @@ export class CartService {
     return this.client.get(BASE_URL + 'cart');
   }
 
+  updateUserCart(itemId: string, quantity: number): Observable<any> {
+    return this.client.put(BASE_URL + `cart/${itemId}`, {
+      quantity: quantity,
+    });
+  }
+
   addToCart(bookId: string): Observable<any> {
     return this.client.post(BASE_URL + 'cart', { bookId: bookId });
   }

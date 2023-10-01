@@ -23,6 +23,12 @@ export class VerifyResetPasswordCodeComponent implements OnInit {
     if (this.storageService.isLoggedIn()) {
       window.location.replace('/home');
     }
+
+    this.resetPasswordCodeValidationForm.valueChanges.subscribe(
+      (selectedValue) => {
+        this.errorMessage = '';
+      }
+    );
   }
 
   resetPasswordCodeValidationForm: FormGroup = new FormGroup({

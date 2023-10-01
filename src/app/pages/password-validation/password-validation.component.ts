@@ -21,10 +21,17 @@ export class PasswordValidationComponent implements OnInit {
     if (this.storageService.isLoggedIn()) {
       window.location.replace('/home');
     }
+
+    this.newPasswordForm.valueChanges.subscribe((selectedValue) => {
+      this.errorMessage = '';
+    });
   }
 
   newPasswordForm: FormGroup = new FormGroup({
-    email: new FormControl(null, [Validators.required]),
+    email: new FormControl(null, [
+      Validators.required,
+      Validators.email,
+    ]),
     newPassword: new FormControl(null, [Validators.required]),
   });
 

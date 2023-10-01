@@ -11,6 +11,7 @@ import { StorageService } from 'src/app/services/storage/storage.service';
 })
 export class ForgottenpasswordComponent implements OnInit {
   loading: boolean = false;
+  message: string = '';
 
   constructor(
     private authService: AuthService,
@@ -22,10 +23,19 @@ export class ForgottenpasswordComponent implements OnInit {
     if (this.storageService.isLoggedIn()) {
       window.location.replace('/home');
     }
+
+    this.restorePasswordForm.valueChanges.subscribe(
+      (selectedValue) => {
+        this.message = '';
+      }
+    );
   }
 
   restorePasswordForm: FormGroup = new FormGroup({
-    email: new FormControl(null, [Validators.required]),
+    email: new FormControl(null, [
+      Validators.required,
+      Validators.email,
+    ]),
   });
 
   handelRestorePasswordForm(restorePasswordForm: FormGroup) {
@@ -39,7 +49,10 @@ export class ForgottenpasswordComponent implements OnInit {
               this.router.navigate(['/verify-reset-password-code']);
             }
           },
-          error: (err) => console.log(err),
+          error: (err) => {
+            this.loading = false;
+            this.message = err.message;
+          },
         });
     }
   }

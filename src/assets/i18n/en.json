@@ -17,7 +17,11 @@
     "empty_cart": "Empty Cart",
     "profile": "Profile",
     "logout": "Logout",
-    "favorites": "Favorites"
+    "favorites": "Favorites",
+    "orders": "Orders",
+    "please_confirm_order_and_payment": "Please Confirm Order and Payment",
+    "place_order_now_and_confirm_payment": "Place Order Now and Confirm Payment",
+    "payment_done": "Payment has been successfully done"
   },
   "login": {
     "email_address": "Email address",
@@ -71,7 +75,10 @@
     "code": "Code",
     "message": "Message",
     "phone_number": "Phone Number",
-    "updated_successfully": "Updated successfully"
+    "updated_successfully": "Updated successfully",
+    "rate_this_book": "Rate this Book",
+    "comment": "Comment",
+    "participate": "Participate"
   },
   "footer": {
     "social_title": "Get connected with us on social networks",

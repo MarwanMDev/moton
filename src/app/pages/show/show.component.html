@@ -72,14 +72,16 @@
                 {{ 'home.add_to_basket' | transloco }}
               </button>
             </div>
-            <div class="col-sm-3 mt-1">
+            <!-- <div class="col-sm-3 mt-1">
               <input
+                id="quantity"
                 type="number"
                 class="form-control"
                 style="background-color: #525252; color: #ffffff"
                 value="1"
+                *ngIf="book.type == 'paper'"
               />
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -89,6 +91,122 @@
         </h6>
         <p>{{ book && book.description }}</p>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="row p-5">
+  <div class="card p-5">
+    <div class="card-body">
+      <div
+        class="mb-5"
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <div class="container mt-0">
+          <div class="card-group m-1 card-group-scroll">
+            <div
+              class="card p-2"
+              style="
+                cursor: pointer;
+                min-height: 20rem;
+                max-width: 18rem;
+              "
+              *ngFor="let review of reviews; let i = index"
+            >
+              <div
+                class="card-body text-center"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <p class="card-text" style="color: gray">
+                  {{ review.title }}
+                </p>
+                <p class="card-text">{{ review.user.name }}</p>
+                <span
+                  class="d-flex flex-row justify-content-center mb-1"
+                  dir="ltr"
+                  ><app-star-rating
+                    [rating]="book.ratingsAverage"
+                  ></app-star-rating
+                ></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row px-5">
+  <div class="card p-5">
+    <div class="card-title d-flex justify-content-center">
+      <h3 style="color: #294d6b; font-size: 2rem; font-weight: 700">
+        {{ 'home.rate_this_book' | transloco }}
+      </h3>
+    </div>
+    <div class="card-body text-center">
+      <form
+        [formGroup]="reviewForm"
+        (ngSubmit)="handelReviewForm(reviewForm)"
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          justify-content: center;
+        "
+      >
+        <div class="mb-3">
+          <label for="title" class="form-label">{{
+            'home.comment' | transloco
+          }}</label>
+          <textarea
+            formControlName="title"
+            type="text"
+            class="form-control"
+            id="title"
+          ></textarea>
+        </div>
+
+        <input
+          formControlName="user"
+          type="hidden"
+          class="form-control mb-2"
+          id="user"
+        />
+
+        <input
+          formControlName="book"
+          type="hidden"
+          class="form-control mb-2"
+          id="book"
+        />
+
+        <star-rating-control
+          [starType]="'svg'"
+          [hoverEnabled]="true"
+          formControlName="ratings"
+        ></star-rating-control>
+
+        <div>
+          <button
+            class="btn w-25"
+            type="submit"
+            style="background-color: #ec553b; color: #ffffff"
+            [disabled]="reviewForm.invalid"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

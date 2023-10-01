@@ -17,6 +17,11 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ForgottenpasswordComponent } from './pages/forgottenpassword/forgottenpassword.component';
 import { PasswordValidationComponent } from './pages/password-validation/password-validation.component';
 import { VerifyResetPasswordCodeComponent } from './pages/verify-reset-password-code/verify-reset-password-code.component';
+import { OrderComponent } from './pages/order/order.component';
+import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
+import { PaymentCompletedComponent } from './pages/payment-completed/payment-completed.component';
+import { ViewPdfComponent } from './pages/view-pdf/view-pdf.component';
+import { PaymobPaymentSuccessComponent } from './pages/paymob-payment-success/paymob-payment-success.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -39,11 +44,17 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [authGuard],
   },
+  {
+    path: 'order',
+    component: OrderComponent,
+    canActivate: [authGuard],
+  },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'news', component: NewsComponent },
   { path: 'books/:type', component: BooksComponent },
+  { path: 'view-pdf/:id', component: ViewPdfComponent },
   {
     path: 'show/:id',
     component: ShowComponent,
@@ -52,12 +63,26 @@ const routes: Routes = [
     path: 'events',
     component: EventsComponent,
   },
-  { path: 'event-info', component: EventInfoComponent },
   { path: 'event-info/:event', component: EventInfoComponent },
   { path: 'category/:language', component: CategoryComponent },
   {
     path: 'payment/:cartId',
     component: PaymentComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'paypal/payment/success',
+    component: PaymentSuccessComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'paymob/payment/success',
+    component: PaymobPaymentSuccessComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'success/payment/completed',
+    component: PaymentCompletedComponent,
     canActivate: [authGuard],
   },
 ];

@@ -77,7 +77,20 @@
     justify-content: center;
   "
 >
-  <div class="container mt-0">
+  <div
+    *ngIf="isLoading"
+    style="
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <div class="spinner-border" role="status" style="color: #ec553b">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div class="container mt-0" *ngIf="!isLoading">
     <div class="card-group m-1 card-group-scroll">
       <div
         class="card p-2"

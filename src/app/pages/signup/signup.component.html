@@ -22,29 +22,22 @@
 
         <div
           *ngIf="
-            registerForm.get('name')?.errors &&
-            registerForm.get('name')?.touched
+            registerForm['controls']['name'].invalid &&
+            (registerForm['controls']['name'].dirty ||
+              registerForm['controls']['name'].touched)
           "
           class="alert alert-danger"
         >
-          <p
-            *ngIf="registerForm.get('name')?.getError('minLength')"
-            class="m-0"
-          >
-            {{ 'minLength' | transloco }}
-          </p>
-          <p
-            *ngIf="registerForm.get('name')?.getError('maxLength')"
-            class="m-0"
-          >
-            Name maxLength is 10
-          </p>
-          <p
-            *ngIf="registerForm.get('name')?.getError('required')"
-            class="m-0"
+          <div
+            *ngIf="registerForm['controls']['name'].errors?.['required']"
           >
             {{ 'sign_up.name_required' | transloco }}
-          </p>
+          </div>
+          <div
+            *ngIf="registerForm['controls']['name'].errors?.['minlength']"
+          >
+            {{ 'sign_up.minLength' | transloco }}
+          </div>
         </div>
 
         <label for="email">{{
@@ -59,23 +52,22 @@
 
         <div
           *ngIf="
-            registerForm.get('email')?.errors &&
-            registerForm.get('email')?.touched
+            registerForm['controls']['email'].invalid &&
+            (registerForm['controls']['email'].dirty ||
+              registerForm['controls']['email'].touched)
           "
           class="alert alert-danger"
         >
-          <p
-            *ngIf="registerForm.get('email')?.getError('email')"
-            class="m-0"
+          <div
+            *ngIf="registerForm['controls']['email'].errors?.['required']"
           >
-            Email inValid
-          </p>
-          <p
-            *ngIf="registerForm.get('email')?.getError('required')"
-            class="m-0"
+            {{ 'sign_up.email_required' | transloco }}
+          </div>
+          <div
+            *ngIf="registerForm['controls']['email'].errors?.['email']"
           >
-            Email is Required
-          </p>
+            {{ 'sign_up.email_format' | transloco }}
+          </div>
         </div>
 
         <label for="password">{{
@@ -90,23 +82,17 @@
 
         <div
           *ngIf="
-            registerForm.get('password')?.errors &&
-            registerForm.get('password')?.touched
+            registerForm['controls']['password'].invalid &&
+            (registerForm['controls']['password'].dirty ||
+              registerForm['controls']['password'].touched)
           "
           class="alert alert-danger"
         >
-          <p
-            *ngIf="registerForm.get('password')?.getError('pattern')"
-            class="m-0"
+          <div
+            *ngIf="registerForm['controls']['password'].errors?.['required']"
           >
-            password must start with upperCase then from 5 to 10
-          </p>
-          <p
-            *ngIf="registerForm.get('password')?.getError('required')"
-            class="m-0"
-          >
-            password is Required
-          </p>
+            {{ 'sign_up.password_required' | transloco }}
+          </div>
         </div>
 
         <label for="confirmPassword">{{
@@ -121,30 +107,17 @@
 
         <div
           *ngIf="
-            registerForm.get('confirmPassword')?.errors &&
-            registerForm.get('confirmPassword')?.touched
+            registerForm['controls']['confirmPassword'].invalid &&
+            (registerForm['controls']['confirmPassword'].dirty ||
+              registerForm['controls']['confirmPassword'].touched)
           "
           class="alert alert-danger"
         >
-          <p
-            *ngIf="
-              registerForm.get('confirmPassword')?.getError('pattern')
-            "
-            class="m-0"
+          <div
+            *ngIf="registerForm['controls']['confirmPassword'].errors?.['required']"
           >
-            confirmPassword must start with upperCase then from 5 to
-            10
-          </p>
-          <p
-            *ngIf="
-              registerForm
-                .get('confirmPassword')
-                ?.getError('required')
-            "
-            class="m-0"
-          >
-            confirmPassword is Required
-          </p>
+            {{ 'sign_up.confirm_passowrd_required' | transloco }}
+          </div>
         </div>
 
         <div class="d-flex justify-content-center">

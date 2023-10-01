@@ -17,7 +17,11 @@
     "empty_cart": "افراغ السلة",
     "profile": "حسابي",
     "logout": "تسجيل خروج",
-    "favorites": "المفضلة"
+    "favorites": "المفضلة",
+    "orders": "طلبات",
+    "please_confirm_order_and_payment": "يرجى تأكيد الطلب والدفع",
+    "place_order_now_and_confirm_payment": "ضع الطلب الآن وقم بتأكيد الدفع",
+    "payment_done": "تم الدفع بنجاح"
   },
   "login": {
     "email_address": "البريد الالكتروني",
@@ -34,8 +38,16 @@
     "new_password": "كلمة السر الجديدة",
     "confirm_password": "تأكيد كلمة السر",
     "register": "سجل الان",
-    "minLength": "الحد الأدنى لطول الاسم هو 3 أحرف",
-    "name_required": "حقل الاسم مطلوب"
+    "minLength": "الحد الأدنى لطول الاسم هو ٤ أحرف",
+    "name_required": "حقل الاسم مطلوب",
+    "email_required": "حقل البريد الإلكتروني مطلوب",
+    "email_format": "ينبغي أن يكون البريد الإلكتروني",
+    "password_required": "حقل كلمة المرور مطلوب",
+    "confirm_passowrd_required": "حقل تأكيد كلمة المرور مطلوب",
+    "no_user_found": "لا يوجد مستخدم لهذا البريد الإلكتروني",
+    "reset_code_required": "مطلوب رمز إعادة الضبط",
+    "code_invalid": "الرمز غير صالح أو منتهي الصلاحية",
+    "re_enter_your_data": "الرجاء إعادة إدخال البيانات الخاصة بك"
   },
   "home": {
     "title": "متون للكتب الالكترونية",
@@ -71,12 +83,26 @@
     "code": "الكود",
     "message": "الرسالة",
     "phone_number": "رقم الهاتف",
-    "updated_successfully": "تم التحديث بنجاح"
+    "updated_successfully": "تم التحديث بنجاح",
+    "rate_this_book": "قيم هذا الكتاب",
+    "comment": "التعليق",
+    "participate": "شارك",
+    "login_to_submit_to_event": "الرجاء تسجيل الدخول لتقديم إلى الحدث",
+    "phone_format": "الرجاء إدخال رقم هاتف صالح",
+    "book_added_to_cart": "تمت إضافة الكتاب إلى سلة التسوق بنجاح",
+    "cash_payment_error_message": "نعتذر عن عدم قبول الدفع النقدي للكتب الإلكترونية"
   },
   "footer": {
     "social_title": "تواصل معنا على شبكات التواصل الاجتماعي",
     "moton": "متون",
     "contact_us": "تواصل معنا",
     "subscribe_now": "اشترك الان"
+  },
+  "order": {
+    "order_number": "رقم الطلب",
+    "order_date": "تاريخ الطلب",
+    "total": "الإجمالي",
+    "shipped_to": "تم شحنها إلي",
+    "shipped": "تم الشحن"
   }
 }

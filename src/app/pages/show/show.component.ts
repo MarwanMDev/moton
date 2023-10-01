@@ -7,7 +7,10 @@ import { CartService } from 'src/app/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { StorageService } from 'src/app/services/storage/storage.service';
 import { map } from 'rxjs/internal/operators/map';
-
+import { ReviewService } from 'src/app/services/review/review.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { User } from 'src/app/interfaces/user';
+import { TranslocoService } from '@ngneat/transloco';
 @Component({
   selector: 'app-show',
   templateUrl: './show.component.html',
@@ -40,8 +43,18 @@ export class ShowComponent implements OnInit {
     type: '',
     updatedAt: '',
     _id: '',
+    pdf: '',
   };
   books: Book[] = [];
+  user: User = {
+    _id: '',
+    name: '',
+    email: '',
+    password: '',
+    role: '',
+    active: false,
+  };
+  reviews: any = [];
 
   private route = inject(ActivatedRoute);
   id$ = this.route.params.pipe(map((params) => params['id']));
@@ -50,8 +63,17 @@ export class ShowComponent implements OnInit {
     private bookService: BooksService,
     private cartService: CartService,
     private toastr: ToastrService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private reviewService: ReviewService,
+    private translocoService: TranslocoService
   ) {}
+
+  reviewForm: FormGroup = new FormGroup({
+    title: new FormControl(null, [Validators.required]),
+    book: new FormControl(null, [Validators.required]),
+    user: new FormControl(null, [Validators.required]),
+    ratings: new FormControl(null, [Validators.required]),
+  });
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
@@ -60,17 +82,43 @@ export class ShowComponent implements OnInit {
       if (!id) return;
       this.bookService.GetBookByID(id).subscribe((res) => {
         this.book = res.data;
+        this.reviewForm.controls['book'].setValue(this.book._id);
       });
     });
 
     this.bookService.getAllBooks().subscribe((res) => {
       this.books = res.data;
     });
+
+    if (this.storageService.isLoggedIn()) {
+      this.user = this.storageService.getUser();
+    }
+
+    this.reviewForm.controls['user'].setValue(this.user._id);
+
+    this.reviewService.getAllReviews().subscribe((res) => {
+      this.reviews = res.data;
+    });
   }
 
   addToCart(bookId: string) {
     this.cartService.addToCart(bookId).subscribe((res) => {
-      this.toastr.success(res.message);
+      this.toastr.success(
+        this.translocoService.translate(
+          'home.book_added_to_cart',
+          {},
+          'ar'
+        )
+      );
+    });
+  }
+
+  handelReviewForm(reviewForm: FormGroup) {
+    this.reviewService.createReview(reviewForm.value).subscribe({
+      next: (response) => {
+        this.toastr.success(response.message);
+      },
+      error: (err) => this.toastr.error(err.error.errors[0].msg),
     });
   }
 }

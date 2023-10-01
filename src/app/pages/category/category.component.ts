@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { WishlistService } from 'src/app/services/whishlist/wishlist.service';
 import { Wishlist } from 'src/app/interfaces/wishlist';
 import { map } from 'rxjs/internal/operators/map';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-category',
@@ -22,9 +23,10 @@ export class CategoryComponent implements OnInit {
   language$ = this.route.params.pipe(
     map((params) => params['language'])
   );
-
   isLoggedIn = false;
   books: Book[] = [];
+  itemsPerPage: number = 12;
+  pagination: number = 1;
   categories: Category[] | undefined;
   keyword = '';
   wishlist: Wishlist = {
@@ -34,6 +36,7 @@ export class CategoryComponent implements OnInit {
   };
   filters: string[] = [];
   sortValue: string = '';
+  isLoading: boolean = false;
 
   constructor(
     private categoryService: CategoryService,
@@ -42,10 +45,12 @@ export class CategoryComponent implements OnInit {
     private cartService: CartService,
     private storageService: StorageService,
     private toastr: ToastrService,
-    private wishlistService: WishlistService
+    private wishlistService: WishlistService,
+    private translocoService: TranslocoService
   ) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.language$.subscribe((language) => {
       if (!language) return;
       this.categoryService.getAllCategories().subscribe((res) => {
@@ -60,6 +65,7 @@ export class CategoryComponent implements OnInit {
         this.books = this.books?.filter(
           (b) => b.language === language
         );
+        this.isLoading = false;
       });
 
       this.title.setTitle(
@@ -99,9 +105,17 @@ export class CategoryComponent implements OnInit {
       });
   }
 
-  addToCart(bookId: string) {
+  addToCart(bookId: string, index: any) {
     this.cartService.addToCart(bookId).subscribe((res) => {
-      this.toastr.success(res.message);
+      if (res.status === 'success') {
+        this.toastr.success(
+          this.translocoService.translate(
+            'home.book_added_to_cart',
+            {},
+            'ar'
+          )
+        );
+      }
     });
   }
 
@@ -116,5 +130,9 @@ export class CategoryComponent implements OnInit {
       this.filters.splice(this.filters.indexOf(filter), 1);
     }
     this.filters = [...this.filters];
+  }
+
+  renderPage(event: number) {
+    this.pagination = event;
   }
 }

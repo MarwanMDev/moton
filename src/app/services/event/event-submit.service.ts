@@ -8,10 +8,16 @@ const BASE_URL = environment.apiURL;
 @Injectable({
   providedIn: 'root',
 })
-export class EventFormService {
+export class EventSubmitService {
   constructor(private client: HttpClient) {}
 
-  submitEventForm(id: string, formData: object): Observable<any> {
-    return this.client.post(BASE_URL + `eventform/${id}`, formData);
+  eventFormSubmission(
+    eventId: string,
+    eventFormData: object
+  ): Observable<any> {
+    return this.client.post(
+      BASE_URL + `eventform/${eventId}`,
+      eventFormData
+    );
   }
 }
