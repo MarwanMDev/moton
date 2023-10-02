@@ -11,6 +11,13 @@
           style="width: 100px"
         />
       </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger mt-2">
+        <div>
+          {{ 'home.incorrect_credentials' | transloco }}
+        </div>
+      </div>
+
       <form
         (ngSubmit)="handelLogin(loginForm)"
         [formGroup]="loginForm"

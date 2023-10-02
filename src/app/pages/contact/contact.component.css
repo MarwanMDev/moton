@@ -48,7 +48,7 @@
 }
 
 .contact-data {
-  height: 100vh;
+  min-height: 100vh;
 
   width: 80%;
   margin: auto;
@@ -57,7 +57,7 @@
 
 .contact-data input {
   text-align: right;
-  width: 80%;
+  /* width: 80%; */
   height: 8%;
 
   margin: auto;
@@ -85,7 +85,7 @@
 
 textarea {
   text-align: right;
-  width: 80%;
+  /* width: 80%; */
   /* height: 20%; */
   margin: auto;
   box-shadow: 2px 2px;

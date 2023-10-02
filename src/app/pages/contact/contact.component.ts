@@ -9,10 +9,18 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent implements OnInit {
+  successMessage: boolean = false;
+  errorMessage: boolean = false;
   contactForm: FormGroup = new FormGroup({
     name: new FormControl(null, [Validators.required]),
-    email: new FormControl(null, [Validators.required]),
-    phone: new FormControl(null, [Validators.required]),
+    email: new FormControl(null, [
+      Validators.required,
+      Validators.email,
+    ]),
+    phone: new FormControl(null, [
+      Validators.required,
+      Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'),
+    ]),
     message: new FormControl(null, [Validators.required]),
   });
 
@@ -23,18 +31,25 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle('Moton - contact');
+    this.contactForm.valueChanges.subscribe((value) => {
+      this.errorMessage = false;
+      this.successMessage = false;
+    });
   }
 
   handelContactForm(contactForm: FormGroup) {
     if (contactForm.valid) {
+      console.log(contactForm.value);
       this.contactService
         .createNewContact(contactForm.value)
         .subscribe({
           next: (response) => {
+            this.successMessage = true;
+            this.contactForm.reset();
             console.log(response);
           },
           error: (err) => {
-            console.log(err);
+            this.errorMessage = true;
           },
         });
     }

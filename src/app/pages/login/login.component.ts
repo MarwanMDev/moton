@@ -9,6 +9,8 @@ import { StorageService } from 'src/app/services/storage/storage.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  errorMessage: boolean = false;
+
   constructor(
     private authService: AuthService,
     private storageService: StorageService
@@ -26,6 +28,10 @@ export class LoginComponent {
     if (this.storageService.isLoggedIn()) {
       window.location.replace('/home');
     }
+
+    this.loginForm.valueChanges.subscribe((value) => {
+      this.errorMessage = false;
+    });
   }
 
   handelLogin(loginForm: FormGroup) {
@@ -35,7 +41,9 @@ export class LoginComponent {
           this.storageService.saveUser(response.data, response.token);
           window.location.replace('/home');
         },
-        error: (err) => console.log(err),
+        error: (err) => {
+          this.errorMessage = true;
+        },
       });
     }
   }

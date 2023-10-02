@@ -22,6 +22,7 @@ import { PaymentSuccessComponent } from './pages/payment-success/payment-success
 import { PaymentCompletedComponent } from './pages/payment-completed/payment-completed.component';
 import { ViewPdfComponent } from './pages/view-pdf/view-pdf.component';
 import { PaymobPaymentSuccessComponent } from './pages/paymob-payment-success/paymob-payment-success.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -83,6 +84,11 @@ const routes: Routes = [
   {
     path: 'success/payment/completed',
     component: PaymentCompletedComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'wishlist',
+    component: WishlistComponent,
     canActivate: [authGuard],
   },
 ];

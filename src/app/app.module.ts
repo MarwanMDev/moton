@@ -47,6 +47,9 @@ import { PaymentSuccessComponent } from './pages/payment-success/payment-success
 import { PaymentCompletedComponent } from './pages/payment-completed/payment-completed.component';
 import { ViewPdfComponent } from './pages/view-pdf/view-pdf.component';
 import { PaymobPaymentSuccessComponent } from './pages/paymob-payment-success/paymob-payment-success.component';
+import { WishlistService } from './services/whishlist/wishlist.service';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { ContactService } from './services/contact/contact.service';
 
 @NgModule({
   declarations: [
@@ -77,6 +80,7 @@ import { PaymobPaymentSuccessComponent } from './pages/paymob-payment-success/pa
     PaymentCompletedComponent,
     ViewPdfComponent,
     PaymobPaymentSuccessComponent,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,6 +117,18 @@ import { PaymobPaymentSuccessComponent } from './pages/paymob-payment-success/pa
       multi: true,
     },
     OrderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    WishlistService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    ContactService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
