@@ -9,6 +9,7 @@ import { StorageService } from 'src/app/services/storage/storage.service';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
+  isLoading: boolean = false;
   registerForm: FormGroup = new FormGroup({
     name: new FormControl(null, [
       Validators.required,
@@ -34,13 +35,18 @@ export class SignupComponent {
   }
 
   handelRegister(registerForm: FormGroup) {
+    this.isLoading = true;
     if (registerForm.valid) {
       this.authService.signUp(registerForm.value).subscribe({
         next: (response) => {
+          this.isLoading = false;
           this.storageService.saveUser(response.data, response.token);
           window.location.replace('/home');
         },
-        error: (err) => console.log(err),
+        error: (err) => {
+          console.log(err);
+          this.isLoading = false;
+        },
       });
     }
   }
