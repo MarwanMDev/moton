@@ -84,20 +84,31 @@
         </div>
 
         <div
+          class="text-center"
           style="
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             gap: 1rem;
           "
         >
           <button
-            [disabled]="loginForm.invalid"
+            class="btn btn-primary"
             type="submit"
-            class="btn mt-5"
+            disabled
+            type="submit"
+            [disabled]="loginForm.invalid"
+            class="btn mt-5 w-50"
             style="background-color: #ec553b; color: #ffffff"
           >
             {{ 'login.login' | transloco }}
+            <span
+              *ngIf="isLoading"
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
           </button>
           <a
             style="text-decoration: none"

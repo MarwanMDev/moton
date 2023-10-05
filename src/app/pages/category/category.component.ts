@@ -88,7 +88,15 @@ export class CategoryComponent implements OnInit {
       .addBookToWishlist(bookId)
       .subscribe((res) => {
         this.wishlist = res;
-        this.toastr.success(res.message);
+        if (res.status === 'success') {
+          this.toastr.success(
+            this.translocoService.translate(
+              'home.book_added_to_wishlist',
+              {},
+              'ar'
+            )
+          );
+        }
       });
   }
 
@@ -101,12 +109,25 @@ export class CategoryComponent implements OnInit {
       .removeBookFromWishlist(bookId)
       .subscribe((res) => {
         this.wishlist = res;
-        this.toastr.success(res.message);
+        this.toastr.success(
+          this.translocoService.translate(
+            'home.book_removed_from_wishlist',
+            {},
+            'ar'
+          )
+        );
       });
   }
 
   addToCart(bookId: string, index: any) {
+    let loading = document.getElementById(`loading - ${index}`);
+    if (loading) {
+      loading.style.display = 'block';
+    }
     this.cartService.addToCart(bookId).subscribe((res) => {
+      if (loading) {
+        loading.style.display = 'none';
+      }
       if (res.status === 'success') {
         this.toastr.success(
           this.translocoService.translate(

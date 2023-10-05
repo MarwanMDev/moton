@@ -201,9 +201,21 @@
                       style="
                         background-color: #ec553b;
                         color: #ffffff;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 5px;
                       "
                     >
                       {{ 'home.add_to_basket' | transloco }}
+                      <span
+                        class="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                        id="loading - {{ i }}"
+                        style="display: none"
+                      ></span>
                     </button>
                   </div>
                 </div>

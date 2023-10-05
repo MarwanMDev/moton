@@ -5,6 +5,7 @@ import { map } from 'rxjs/internal/operators/map';
 import { Cart } from 'src/app/interfaces/cart';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { OrderService } from 'src/app/services/order/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -38,7 +39,8 @@ export class PaymentComponent implements OnInit {
   errorMessage: boolean = false;
   constructor(
     private cartService: CartService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private router: Router
   ) {}
 
   paymentForm = new FormGroup({
@@ -69,7 +71,9 @@ export class PaymentComponent implements OnInit {
             paymentForm.controls['shippingAddress'].value
           )
           .subscribe((response) => {
-            console.log(response);
+            if (response.status === 'success') {
+              this.router.navigate(['success/payment/completed']);
+            }
           });
       }
     } else if (paymentForm.controls['payment'].value === 'paypal') {

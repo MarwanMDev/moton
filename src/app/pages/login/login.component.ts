@@ -10,6 +10,7 @@ import { StorageService } from 'src/app/services/storage/storage.service';
 })
 export class LoginComponent {
   errorMessage: boolean = false;
+  isLoading: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -31,17 +32,21 @@ export class LoginComponent {
 
     this.loginForm.valueChanges.subscribe((value) => {
       this.errorMessage = false;
+      this.isLoading = false;
     });
   }
 
   handelLogin(loginForm: FormGroup) {
+    this.isLoading = true;
     if (loginForm.valid) {
       this.authService.login(loginForm.value).subscribe({
         next: (response) => {
+          this.isLoading = false;
           this.storageService.saveUser(response.data, response.token);
           window.location.replace('/home');
         },
         error: (err) => {
+          this.isLoading = false;
           this.errorMessage = true;
         },
       });
