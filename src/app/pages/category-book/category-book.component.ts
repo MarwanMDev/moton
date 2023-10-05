@@ -40,6 +40,8 @@ export class CategoryBookComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
   keyword = '';
   categories!: Category[];
+  language!: string;
+  type!: string;
 
   constructor(
     private categoryService: CategoryService,
@@ -59,13 +61,16 @@ export class CategoryBookComponent implements OnInit, OnDestroy {
       map((params) => params['type'])
     );
 
-    let language = this.route.snapshot.queryParamMap.get('language');
-
     this.isLoggedIn = this.storageService.isLoggedIn();
 
     category$.subscribe((category) => {
       this.isLoading = true;
-
+      type$.subscribe((type) => {
+        this.type = type;
+      });
+      this.route.queryParams.subscribe((params) => {
+        this.language = params['language'];
+      });
       this.categoryService
         .getCategoryById(category)
         .subscribe((response) => {

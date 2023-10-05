@@ -1,7 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StorageService } from 'src/app/services/storage/storage.service';
+import { UserProfile } from 'src/app/interfaces/userProfile';
 
 @Component({
   selector: 'app-profile',
@@ -10,6 +16,12 @@ import { StorageService } from 'src/app/services/storage/storage.service';
 })
 export class ProfileComponent implements OnInit {
   successMessage: boolean = false;
+  userProfile: UserProfile = {
+    email: '',
+    name: '',
+    phone: '',
+    profileImage: '',
+  };
   updateUserForm: FormGroup = new FormGroup({
     name: new FormControl(null, [
       Validators.required,
@@ -27,6 +39,10 @@ export class ProfileComponent implements OnInit {
     password: new FormControl(null, [Validators.required]),
   });
 
+  imageForm = new FormGroup({
+    profileImage: new FormControl(null, [Validators.required]),
+  });
+
   constructor(
     private profileService: ProfileService,
     private storageService: StorageService
@@ -34,6 +50,8 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileService.getProfile().subscribe((res) => {
+      this.userProfile = res.data;
+      console.log(this.userProfile);
       this.updateUserForm.patchValue({
         name: res.data.name,
         email: res.data.email,
@@ -49,6 +67,20 @@ export class ProfileComponent implements OnInit {
         .subscribe({
           next: (response) => {
             this.successMessage = true;
+          },
+          error: (err) => console.log(err),
+        });
+    }
+  }
+
+  handelImageForm(imageForm: FormGroup) {
+    if (imageForm.valid) {
+      this.profileService
+        .updateUserProfile(imageForm.value)
+        .subscribe({
+          next: (response) => {
+            this.successMessage = true;
+            console.log(response);
           },
           error: (err) => console.log(err),
         });
