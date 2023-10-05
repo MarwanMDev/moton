@@ -34,11 +34,13 @@ export class BooksComponent implements OnInit {
         return;
       }
       this.categoryService
-        .getCategoryByType(type)
+        .getAllCategories()
         .subscribe((response) => {
           this.isLoading = false;
 
-          this.categories = response;
+          this.categories = response.data.filter(
+            (category: any) => category.type === type
+          );
           this.arabicCategories = this.categories?.filter(
             (category) => category.language === 'arabic'
           );
