@@ -16,6 +16,7 @@
   <div
     class="card p-2"
     style="border: none; background-color: #ffffff"
+    *ngIf="events.length; else elseBlock"
   >
     <div class="card-body">
       <div
@@ -46,4 +47,21 @@
       </div>
     </div>
   </div>
+  <ng-template #elseBlock
+    ><div class="card">
+      <div class="card-body">
+        <div
+          class="mb-3"
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <h2>{{ 'home.no_events' | transloco }}</h2>
+        </div>
+      </div>
+    </div></ng-template
+  >
 </div>

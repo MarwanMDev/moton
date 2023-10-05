@@ -50,6 +50,7 @@ import { PaymobPaymentSuccessComponent } from './pages/paymob-payment-success/pa
 import { WishlistService } from './services/whishlist/wishlist.service';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { ContactService } from './services/contact/contact.service';
+import { CategoryBookComponent } from './pages/category-book/category-book.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { ContactService } from './services/contact/contact.service';
     ViewPdfComponent,
     PaymobPaymentSuccessComponent,
     WishlistComponent,
+    CategoryBookComponent,
   ],
   imports: [
     BrowserModule,

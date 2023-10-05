@@ -23,6 +23,8 @@ import { PaymentCompletedComponent } from './pages/payment-completed/payment-com
 import { ViewPdfComponent } from './pages/view-pdf/view-pdf.component';
 import { PaymobPaymentSuccessComponent } from './pages/paymob-payment-success/paymob-payment-success.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { CategoryBookComponent } from './pages/category-book/category-book.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -54,7 +56,14 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'news', component: NewsComponent },
-  { path: 'books/:type', component: BooksComponent },
+  {
+    path: 'books/:type',
+    component: BooksComponent,
+  },
+  {
+    path: 'books/:type/category/:category', // child route path
+    component: CategoryBookComponent, // child route component that the router renders
+  },
   { path: 'view-pdf/:id', component: ViewPdfComponent },
   {
     path: 'show/:id',
@@ -91,6 +100,7 @@ const routes: Routes = [
     component: WishlistComponent,
     canActivate: [authGuard],
   },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

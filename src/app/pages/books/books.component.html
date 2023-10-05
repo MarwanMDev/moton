@@ -85,10 +85,16 @@
       <div class="card-group m-1 card-group-scroll">
         <div
           class="card p-2 shadow"
-          style="cursor: pointer; min-height: 20rem"
-          *ngFor="let book of books; let i = index"
+          style="cursor: pointer; max-height: 30rem; max-width: 18rem"
+          *ngFor="
+            let arabicCategory of arabicCategories;
+            let i = index
+          "
         >
-          <a [routerLink]="['/show', book._id]">
+          <a
+            [routerLink]="['category/', arabicCategory._id]"
+            [queryParams]="{ language: 'arabic' }"
+          >
             <img
               src="https://source.unsplash.com/collection/190727/600x800"
               class="card-img-top"
@@ -113,22 +119,9 @@
                 font-size: 1.4rem;
               "
             >
-              {{ book.category.name }}
+              {{ arabicCategory.name }}
             </p>
           </a>
-          <div class="card-body text-center">
-            <h5 class="card-title">{{ book.bookName }}</h5>
-            <p class="card-text" style="color: gray">
-              {{ book.authorName }}
-            </p>
-            <span
-              class="d-flex flex-row justify-content-center mb-1"
-              dir="ltr"
-              ><app-star-rating
-                [rating]="book.ratingsAverage"
-              ></app-star-rating
-            ></span>
-          </div>
         </div>
       </div>
     </div>
@@ -169,10 +162,18 @@
       <div class="card-group m-1 card-group-scroll">
         <div
           class="card p-2 shadow"
-          style="cursor: pointer; min-height: 20rem"
-          *ngFor="let book of books; let i = index"
+          style="cursor: pointer; max-height: 30rem; max-width: 18rem"
+          *ngFor="
+            let englishCategory of englishCategories;
+            let i = index
+          "
         >
-          <a [routerLink]="['/show', book._id]">
+          <a
+            [routerLink]="['category/', englishCategory._id]"
+            [queryParams]="{
+              language: 'english',
+            }"
+          >
             <img
               src="https://source.unsplash.com/collection/190727/600x800"
               class="card-img-top"
@@ -197,22 +198,9 @@
                 font-size: 1.4rem;
               "
             >
-              {{ book.category.name }}
+              {{ englishCategory.name }}
             </p>
           </a>
-          <div class="card-body text-center">
-            <h5 class="card-title">{{ book.bookName }}</h5>
-            <p class="card-text" style="color: gray">
-              {{ book.authorName }}
-            </p>
-            <span
-              class="d-flex flex-row justify-content-center mb-1"
-              dir="ltr"
-              ><app-star-rating
-                [rating]="book.ratingsAverage"
-              ></app-star-rating
-            ></span>
-          </div>
         </div>
       </div>
     </div>

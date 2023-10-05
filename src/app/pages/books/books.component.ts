@@ -2,7 +2,9 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/internal/operators/map';
 import { Book } from 'src/app/interfaces/book';
+import { Category } from 'src/app/interfaces/category';
 import { BooksService } from 'src/app/services/books/books.service';
+import { CategoryService } from 'src/app/services/category/category.service';
 
 @Component({
   selector: 'app-books',
@@ -14,10 +16,14 @@ export class BooksComponent implements OnInit {
   type$ = this.route.params.pipe(map((params) => params['type']));
   isLoading: boolean = false;
   books: Book[] = [];
+  categories: Category[] = [];
+  arabicCategories: Category[] = [];
+  englishCategories: Category[] = [];
 
-  constructor(private bookService: BooksService) {}
-
-  categoryName: any;
+  constructor(
+    private bookService: BooksService,
+    private categoryService: CategoryService
+  ) {}
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -27,13 +33,33 @@ export class BooksComponent implements OnInit {
         this.isLoading = false;
         return;
       }
+      this.categoryService
+        .getCategoryByType(type)
+        .subscribe((response) => {
+          this.isLoading = false;
 
-      this.bookService.getAllBooks().subscribe((res) => {
-        this.isLoading = false;
-
-        this.books = res.data;
-        this.books = this.books?.filter((b) => b.type === type);
-      });
+          this.categories = response;
+          this.arabicCategories = this.categories?.filter(
+            (category) => category.language === 'arabic'
+          );
+          this.englishCategories = this.categories?.filter(
+            (category) => category.language === 'english'
+          );
+        });
     });
+
+    // this.type$.subscribe((type) => {
+    //   if (!type) {
+    //     this.isLoading = false;
+    //     return;
+    //   }
+
+    //   this.bookService.getAllBooks().subscribe((res) => {
+    //     this.isLoading = false;
+
+    //     this.books = res.data;
+    //     this.books = this.books?.filter((b) => b.type === type);
+    //   });
+    // });
   }
 }

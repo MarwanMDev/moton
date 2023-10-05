@@ -98,7 +98,8 @@
     "incorrect_email": "البريد الإلكتروني الخاص بك ليس صحيحا",
     "message_sent": "تم ارسال الرسالة بنجاح",
     "book_added_to_wishlist": "تمت إضافة الكتاب إلى قائمة الرغبات",
-    "book_removed_from_wishlist": "تمت إزالة الكتاب من قائمة الرغبات"
+    "book_removed_from_wishlist": "تمت إزالة الكتاب من قائمة الرغبات",
+    "no_events": "لا توجد فعاليات الآن"
   },
   "footer": {
     "social_title": "تواصل معنا على شبكات التواصل الاجتماعي",
