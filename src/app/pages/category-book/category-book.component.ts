@@ -1,5 +1,6 @@
 import {
   Component,
+  OnDestroy,
   OnInit,
   SimpleChanges,
   inject,
@@ -22,7 +23,7 @@ import { WishlistService } from 'src/app/services/whishlist/wishlist.service';
   templateUrl: './category-book.component.html',
   styleUrls: ['./category-book.component.css'],
 })
-export class CategoryBookComponent implements OnInit {
+export class CategoryBookComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   books: Book[] = [];
   category!: Category;
@@ -33,7 +34,7 @@ export class CategoryBookComponent implements OnInit {
   };
   filters: string[] = [];
   sortValue: string = '';
-  itemsPerPage: number = 12;
+  itemsPerPage: number = 6;
   pagination: number = 1;
   isLoggedIn: Boolean = false;
   isLoading: boolean = false;
@@ -60,33 +61,53 @@ export class CategoryBookComponent implements OnInit {
 
     let language = this.route.snapshot.queryParamMap.get('language');
 
-    category$.subscribe((category) =>
+    this.isLoggedIn = this.storageService.isLoggedIn();
+
+    category$.subscribe((category) => {
+      this.isLoading = true;
+
       this.categoryService
         .getCategoryById(category)
         .subscribe((response) => {
           this.category = response.data;
-        })
-    );
+          this.categoryService
+            .getAllCategories()
+            .subscribe((category) => {
+              this.categories = category.data;
+              this.categories = this.categories.filter(
+                (c) =>
+                  c.type === this.category.type &&
+                  c.language === this.category.language
+              );
+              this.booksService
+                .getAllBooks()
+                .subscribe((response) => {
+                  this.books = response.data.filter(
+                    (book: any) =>
+                      book.category.name === this.category.name
+                  );
+                });
 
-    type$.subscribe((type) => {
-      this.categoryService
-        .getCategoryByType(type)
-        .subscribe((category) => {
-          this.categories = category;
-          this.categories = this.categories.filter(
-            (c) => c.language === language
-          );
+              this.isLoading = false;
+
+              // type$.subscribe((type) => {
+              //   console.log(type);
+              //   this.categoryService
+              //     .getCategoryByType(type)
+              //     .subscribe((category) => {
+              //       this.categories = category;
+              //       this.categories = this.categories.filter(
+              //         (c) => c.language === language
+              //       );
+              //       console.log(this.categories);
+              //     });
+              // });
+            });
         });
     });
-
-    this.booksService.getAllBooks().subscribe((response) => {
-      this.books = response.data;
-      this.books = this.books.filter(
-        (book) => book.category.name === this.category.name
-      );
-      console.log(this.books);
-    });
   }
+
+  ngOnDestroy(): void {}
 
   addBookToWishlist(bookId: string) {
     this.wishlistService
@@ -160,11 +181,5 @@ export class CategoryBookComponent implements OnInit {
 
   renderPage(event: number) {
     this.pagination = event;
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    // changes.prop contains the old and the new value...
-    console.log(changes);
-    console.log('hey');
   }
 }

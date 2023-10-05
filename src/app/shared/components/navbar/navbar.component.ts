@@ -34,6 +34,10 @@ export class NavbarComponent implements OnInit {
   public categories: Category[] | undefined;
   public arabicCategories: Category[] | undefined;
   public englishCategories: Category[] | undefined;
+  public arabicPaperCategories: Category[] | undefined;
+  public arabicElectronicCategories: Category[] | undefined;
+  public englishPaperCategories: Category[] | undefined;
+  public englishElectronicCategories: Category[] | undefined;
 
   constructor(
     private categoryService: CategoryService,
@@ -45,9 +49,22 @@ export class NavbarComponent implements OnInit {
       this.arabicCategories = this.categories?.filter(
         (c) => c.language === 'arabic'
       );
+      this.arabicPaperCategories = this.arabicCategories?.filter(
+        (ac) => ac.type === 'paper'
+      );
+      this.arabicElectronicCategories = this.arabicCategories?.filter(
+        (ac) => ac.type === 'electronic'
+      );
       this.englishCategories = this.categories?.filter(
         (c) => c.language === 'english'
       );
+      this.englishPaperCategories = this.englishCategories?.filter(
+        (ec) => ec.type === 'paper'
+      );
+      this.englishElectronicCategories =
+        this.englishCategories?.filter(
+          (ec) => ec.type === 'electronic'
+        );
     });
   }
 

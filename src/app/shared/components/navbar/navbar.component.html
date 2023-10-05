@@ -31,7 +31,7 @@
             {{ 'navigation.home' | transloco }}
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a
             class="nav-link"
             aria-current="page"
@@ -50,8 +50,8 @@
           >
             {{ 'navigation.english_books' | transloco }}
           </a>
-        </li>
-        <!-- <li class="nav-item dropdown">
+        </li> -->
+        <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -62,24 +62,56 @@
             {{ 'navigation.arabic_books' | transloco }}
           </a>
           <ul class="dropdown-menu">
-            <li
-              *ngFor="let aCategory of arabicCategories; index as i"
-            >
-              <a class="dropdown-item" routerLink="">{{
-                aCategory.name
-              }}</a>
-            </li>
-            <li><hr class="dropdown-divider" /></li>
             <li>
               <a
                 class="dropdown-item"
-                [routerLink]="['/category', 'arabic']"
-                >{{ 'navigation.view_all' | transloco }}</a
+                style="pointer-events: none; font-weight: 500"
+                >{{ 'home.paper_books' | transloco }}</a
+              >
+            </li>
+            <li
+              *ngFor="
+                let araPCategory of arabicPaperCategories;
+                index as i
+              "
+            >
+              <a
+                class="dropdown-item"
+                [routerLink]="[
+                  '/books/',
+                  araPCategory.type,
+                  'category',
+                  araPCategory._id
+                ]"
+                >{{ araPCategory.name }}</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <a
+              class="dropdown-item"
+              style="pointer-events: none; font-weight: 500"
+              >{{ 'home.electronic_books' | transloco }}</a
+            >
+            <li
+              *ngFor="
+                let araECategory of arabicElectronicCategories;
+                index as i
+              "
+            >
+              <a
+                class="dropdown-item"
+                [routerLink]="[
+                  '/books/',
+                  araECategory.type,
+                  'category',
+                  araECategory._id
+                ]"
+                >{{ araECategory.name }}</a
               >
             </li>
           </ul>
-        </li> -->
-        <!-- <li class="nav-item dropdown">
+        </li>
+        <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -90,23 +122,57 @@
             {{ 'navigation.english_books' | transloco }}
           </a>
           <ul class="dropdown-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                style="pointer-events: none; font-weight: 500"
+                >{{ 'home.paper_books' | transloco }}</a
+              >
+            </li>
             <li
-              *ngFor="let eCategory of englishCategories; index as i"
+              *ngFor="
+                let enPCategory of englishPaperCategories;
+                index as i
+              "
             >
-              <a class="dropdown-item" routerLink="">{{
-                eCategory.name
-              }}</a>
+              <a
+                class="dropdown-item"
+                [routerLink]="[
+                  '/books/',
+                  enPCategory.type,
+                  'category',
+                  enPCategory._id
+                ]"
+                >{{ enPCategory.name }}</a
+              >
             </li>
             <li><hr class="dropdown-divider" /></li>
             <li>
               <a
                 class="dropdown-item"
-                [routerLink]="['/category', 'english']"
-                >{{ 'navigation.view_all' | transloco }}</a
+                style="pointer-events: none; font-weight: 500"
+                >{{ 'home.electronic_books' | transloco }}</a
+              >
+            </li>
+            <li
+              *ngFor="
+                let enECategory of englishElectronicCategories;
+                index as i
+              "
+            >
+              <a
+                class="dropdown-item"
+                [routerLink]="[
+                  '/books/',
+                  enECategory.type,
+                  'category',
+                  enECategory._id
+                ]"
+                >{{ enECategory.name }}</a
               >
             </li>
           </ul>
-        </li> -->
+        </li>
         <li class="nav-item">
           <a
             class="nav-link"

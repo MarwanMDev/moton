@@ -94,13 +94,13 @@
     <div class="card-group m-1 card-group-scroll">
       <div
         class="card p-2"
-        style="cursor: pointer; min-height: 20rem"
+        style="cursor: pointer; min-height: 20rem; max-width: 15rem"
         *ngFor="let book of books; let i = index"
       >
         <a [routerLink]="['/show', book._id]">
           <img
             src="https://source.unsplash.com/collection/190727/600x800"
-            class="card-img-top"
+            class="card-img-top p-5"
             alt="..."
           />
         </a>
