@@ -90,37 +90,52 @@
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
-  <div class="container mt-0" *ngIf="!isLoading">
-    <div class="card-group m-1 card-group-scroll">
-      <div
-        class="card p-2"
-        style="cursor: pointer; min-height: 20rem; max-width: 15rem"
-        *ngFor="let book of books; let i = index"
-      >
-        <a [routerLink]="['/show', book._id]">
-          <img
-            src="https://source.unsplash.com/collection/190727/600x800"
-            class="card-img-top p-5"
-            alt="..."
-          />
-        </a>
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ book.bookName }}</h5>
-          <p class="card-text" style="color: gray">
-            {{ book.authorName }}
-          </p>
-          <span
-            class="d-flex flex-row justify-content-center mb-1"
-            dir="ltr"
-            ><app-star-rating
-              [rating]="book.ratingsAverage"
-            ></app-star-rating
-          ></span>
-        </div>
-      </div>
-    </div>
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    "
+    class="p-5"
+    *ngIf="!isLoading"
+  >
+    <owl-carousel-o
+      [options]="customOptions"
+      (translated)="getPassedData($event)"
+    >
+      <ng-container *ngFor="let book of books; let i = index">
+        <ng-template carouselSlide [id]="book._id" class="slider">
+          <div
+            class="card p-2 mx-2 shadow"
+            style="cursor: pointer; min-height: 20rem"
+          >
+            <a [routerLink]="['/show', book._id]">
+              <img
+                src="https://source.unsplash.com/collection/190727/600x800"
+                class="card-img-top p-5"
+                alt="..."
+              />
+            </a>
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ book.bookName }}</h5>
+              <p class="card-text" style="color: gray">
+                {{ book.authorName }}
+              </p>
+              <span
+                class="d-flex flex-row justify-content-center mb-1"
+                dir="ltr"
+                ><app-star-rating
+                  [rating]="book.ratingsAverage"
+                ></app-star-rating
+              ></span>
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
   </div>
 </div>
+
 <!-- <div class="w-100 d-flex justify-content-center mb-5">
   <google-map></google-map>
 </div> -->

@@ -13,10 +13,13 @@ export class OrderComponent implements OnInit {
   isLoading: boolean = false;
 
   ngOnInit(): void {
+    this.orderService.getPaymobTokens().subscribe((token) => {
+      console.log(token);
+    });
     this.isLoading = true;
     this.orderService.getAllOrders().subscribe((response) => {
       this.orders = response.data;
-      console.log(this.orders);
+      // console.log(this.orders);
       this.isLoading = false;
     });
   }

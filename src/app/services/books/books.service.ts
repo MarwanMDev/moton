@@ -26,4 +26,8 @@ export class BooksService {
   search(keywords: string): Observable<any> {
     return this.client.get(BASE_URL + `books/search/${keywords}`);
   }
+
+  getPaymobTokens(): Observable<any> {
+    return this.client.get(BASE_URL + `order/paymobTokens`);
+  }
 }

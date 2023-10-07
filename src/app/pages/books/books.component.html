@@ -81,49 +81,70 @@
         <span class="visually-hidden">Loading...</span>
       </div>
     </div>
-    <div class="container pb-5 mt-0" *ngIf="!isLoading">
-      <div class="card-group m-1 card-group-scroll">
-        <div
-          class="card p-2 shadow"
-          style="cursor: pointer; max-height: 30rem; max-width: 18rem"
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      "
+      class="p-5"
+      *ngIf="!isLoading"
+    >
+      <owl-carousel-o [options]="customOptions">
+        <ng-container
           *ngFor="
             let arabicCategory of arabicCategories;
             let i = index
           "
         >
-          <a
-            [routerLink]="['category/', arabicCategory._id]"
-            [queryParams]="{ language: 'arabic' }"
+          <ng-template
+            carouselSlide
+            [id]="arabicCategory._id"
+            class="slider"
           >
-            <img
-              src="https://source.unsplash.com/collection/190727/600x800"
-              class="card-img-top"
-              style="filter: brightness(25%)"
-              alt="..."
-            />
-            <p
+            <div
+              class="card p-2 mx-2 shadow"
               style="
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-center;
-                position: absolute;
-                top: 30%;
-                left: 50%;
-                width: 100%;
-                text-align: center;
-                transform: translate(-50%, -50%);
-                text-decoration: none;
-                color: #ffffff;
-                font-family: 'Roboto';
-                font-weight: 700;
-                font-size: 1.4rem;
+                cursor: pointer;
+                max-height: 30rem;
+                max-width: 18rem;
               "
             >
-              {{ arabicCategory.name }}
-            </p>
-          </a>
-        </div>
-      </div>
+              <a
+                [routerLink]="['category/', arabicCategory._id]"
+                [queryParams]="{ language: 'arabic' }"
+              >
+                <img
+                  src="https://source.unsplash.com/collection/190727/600x800"
+                  class="card-img-top"
+                  style="filter: brightness(25%)"
+                  alt="..."
+                />
+                <p
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-center;
+                    position: absolute;
+                    top: 30%;
+                    left: 50%;
+                    width: 100%;
+                    text-align: center;
+                    transform: translate(-50%, -50%);
+                    text-decoration: none;
+                    color: #ffffff;
+                    font-family: 'Roboto';
+                    font-weight: 700;
+                    font-size: 1.4rem;
+                  "
+                >
+                  {{ arabicCategory.name }}
+                </p>
+              </a>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
     </div>
   </div>
 </div>
@@ -158,51 +179,72 @@
         <span class="visually-hidden">Loading...</span>
       </div>
     </div>
-    <div class="container pb-5 mt-0" *ngIf="!isLoading">
-      <div class="card-group m-1 card-group-scroll">
-        <div
-          class="card p-2 shadow"
-          style="cursor: pointer; max-height: 30rem; max-width: 18rem"
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      "
+      class="p-5"
+      *ngIf="!isLoading"
+    >
+      <owl-carousel-o [options]="customOptions">
+        <ng-container
           *ngFor="
             let englishCategory of englishCategories;
             let i = index
           "
         >
-          <a
-            [routerLink]="['category/', englishCategory._id]"
-            [queryParams]="{
-              language: 'english',
-            }"
+          <ng-template
+            carouselSlide
+            [id]="englishCategory._id"
+            class="slider"
           >
-            <img
-              src="https://source.unsplash.com/collection/190727/600x800"
-              class="card-img-top"
-              style="filter: brightness(25%)"
-              alt="..."
-            />
-            <p
+            <div
+              class="card p-2 mx-2 shadow"
               style="
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-center;
-                position: absolute;
-                top: 30%;
-                left: 50%;
-                width: 100%;
-                text-align: center;
-                transform: translate(-50%, -50%);
-                text-decoration: none;
-                color: #ffffff;
-                font-family: 'Roboto';
-                font-weight: 700;
-                font-size: 1.4rem;
+                cursor: pointer;
+                max-height: 30rem;
+                max-width: 18rem;
               "
             >
-              {{ englishCategory.name }}
-            </p>
-          </a>
-        </div>
-      </div>
+              <a
+                [routerLink]="['category/', englishCategory._id]"
+                [queryParams]="{
+              language: 'english',
+            }"
+              >
+                <img
+                  src="https://source.unsplash.com/collection/190727/600x800"
+                  class="card-img-top"
+                  style="filter: brightness(25%)"
+                  alt="..."
+                />
+                <p
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-center;
+                    position: absolute;
+                    top: 30%;
+                    left: 50%;
+                    width: 100%;
+                    text-align: center;
+                    transform: translate(-50%, -50%);
+                    text-decoration: none;
+                    color: #ffffff;
+                    font-family: 'Roboto';
+                    font-weight: 700;
+                    font-size: 1.4rem;
+                  "
+                >
+                  {{ englishCategory.name }}
+                </p>
+              </a>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
     </div>
   </div>
 </div>

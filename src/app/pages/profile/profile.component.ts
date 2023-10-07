@@ -42,6 +42,7 @@ export class ProfileComponent implements OnInit {
   imageForm = new FormGroup({
     profileImage: new FormControl(null, [Validators.required]),
   });
+  photoUrl: string = '';
 
   constructor(
     private profileService: ProfileService,
@@ -51,12 +52,12 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.profileService.getProfile().subscribe((res) => {
       this.userProfile = res.data;
-      console.log(this.userProfile);
       this.updateUserForm.patchValue({
         name: res.data.name,
         email: res.data.email,
         phone: res.data.phone,
       });
+      console.log(this.userProfile);
     });
   }
 
@@ -76,11 +77,10 @@ export class ProfileComponent implements OnInit {
   handelImageForm(imageForm: FormGroup) {
     if (imageForm.valid) {
       this.profileService
-        .updateUserProfile(imageForm.value)
+        .updateUserProfile({ profileImage: this.photoUrl })
         .subscribe({
           next: (response) => {
             this.successMessage = true;
-            console.log(response);
           },
           error: (err) => console.log(err),
         });
@@ -102,7 +102,13 @@ export class ProfileComponent implements OnInit {
           },
           error: (err) => {},
         });
-      console.log(updatePasswordForm.value);
+    }
+  }
+
+  onFileSelected(event: any) {
+    if (event.target.files.length > 0) {
+      this.photoUrl = event.target.files[0].name;
+      console.log(this.photoUrl);
     }
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BooksService } from '../../services/books/books.service';
 import { Book } from 'src/app/interfaces/book';
+import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,32 @@ import { Book } from 'src/app/interfaces/book';
 export class HomeComponent {
   isLoading: boolean = false;
   public books: Book[] | undefined;
+  customOptions: OwlOptions = {
+    loop: false,
+    rtl: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 2,
+      },
+      740: {
+        items: 3,
+      },
+      940: {
+        items: 4,
+      },
+    },
+    nav: false,
+  };
+  activeSlides?: SlidesOutputData;
 
   constructor(private booksService: BooksService) {}
 
@@ -25,5 +52,9 @@ export class HomeComponent {
       });
       this.books = this.books?.slice(0, 10);
     });
+  }
+
+  getPassedData(data: SlidesOutputData) {
+    this.activeSlides = data;
   }
 }

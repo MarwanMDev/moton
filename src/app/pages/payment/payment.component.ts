@@ -84,6 +84,7 @@ export class PaymentComponent implements OnInit {
         )
         .subscribe({
           next: (response) => {
+            console.log(response);
             if (response.status === 'success') {
               window.location.href = response.session;
             }

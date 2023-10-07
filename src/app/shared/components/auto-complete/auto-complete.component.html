@@ -6,10 +6,12 @@
     placeholder="{{ 'home.search_placeholder' | transloco }}"
     (change)="bookNameValue($any($event.target).value)"
   />
-  <datalist id="datalistOptions" style="width: 100%">
-    <option
-      *ngFor="let book of books"
-      [value]="book.bookName"
-    ></option>
-  </datalist>
+  <div style="max-height: 20px; overflow-y: scroll">
+    <datalist id="datalistOptions" style="width: 100%">
+      <option
+        *ngFor="let book of books"
+        [value]="book.bookName"
+      ></option>
+    </datalist>
+  </div>
 </div>

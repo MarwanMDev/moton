@@ -44,9 +44,10 @@ export class ContactComponent implements OnInit {
         .createNewContact(contactForm.value)
         .subscribe({
           next: (response) => {
-            this.successMessage = true;
-            this.contactForm.reset();
-            console.log(response);
+            if (response.status === 'success') {
+              this.contactForm.reset();
+              this.successMessage = true;
+            }
           },
           error: (err) => {
             this.errorMessage = true;

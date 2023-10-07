@@ -54,4 +54,8 @@ export class OrderService {
         `order/create-paymob-order?transactionId=${transactionId}&orderId=${orderId}`
     );
   }
+
+  getPaymobTokens(): Observable<any> {
+    return this.client.get(BASE_URL + `order/paymobTokens`);
+  }
 }

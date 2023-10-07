@@ -99,48 +99,49 @@
   <div class="card p-5">
     <div class="card-body">
       <div
-        class="mb-5"
         style="
           display: flex;
           flex-direction: column;
           justify-content: center;
         "
+        class="p-5"
       >
-        <div class="container mt-0">
-          <div class="card-group m-1 card-group-scroll">
-            <div
-              class="card p-2"
-              style="
-                cursor: pointer;
-                min-height: 20rem;
-                max-width: 18rem;
-              "
-              *ngFor="let review of reviews; let i = index"
+        <owl-carousel-o [options]="customOptions">
+          <ng-container *ngFor="let review of reviews; let i = index">
+            <ng-template
+              carouselSlide
+              [id]="review._id"
+              class="slider"
             >
               <div
-                class="card-body text-center"
-                style="
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: center;
-                  align-items: center;
-                "
+                class="card p-2 mx-2 shadow"
+                style="cursor: pointer; max-width: 18rem"
               >
-                <p class="card-text" style="color: gray">
-                  {{ review.title }}
-                </p>
-                <p class="card-text">{{ review.user.name }}</p>
-                <span
-                  class="d-flex flex-row justify-content-center mb-1"
-                  dir="ltr"
-                  ><app-star-rating
-                    [rating]="book.ratingsAverage"
-                  ></app-star-rating
-                ></span>
+                <div
+                  class="card-body text-center"
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                  "
+                >
+                  <p class="card-text" style="color: gray">
+                    {{ review.title }}
+                  </p>
+                  <p class="card-text">{{ review.user.name }}</p>
+                  <span
+                    class="d-flex flex-row justify-content-center mb-1"
+                    dir="ltr"
+                    ><app-star-rating
+                      [rating]="book.ratingsAverage"
+                    ></app-star-rating
+                  ></span>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
       </div>
     </div>
   </div>
@@ -220,43 +221,44 @@
     </div>
     <div class="card-body">
       <div
-        class="mb-5"
         style="
           display: flex;
           flex-direction: column;
           justify-content: center;
         "
+        class="p-5"
       >
-        <div class="container mt-0">
-          <div class="card-group m-1 card-group-scroll">
-            <div
-              class="card p-2"
-              style="cursor: pointer; min-height: 20rem"
-              *ngFor="let book of books; let i = index"
-            >
-              <a [routerLink]="['/show', book._id]">
-                <img
-                  src="https://source.unsplash.com/collection/190727/600x800"
-                  class="card-img-top"
-                  alt="..."
-                />
-              </a>
-              <div class="card-body text-center">
-                <h5 class="card-title">{{ book.bookName }}</h5>
-                <p class="card-text" style="color: gray">
-                  {{ book.authorName }}
-                </p>
-                <span
-                  class="d-flex flex-row justify-content-center mb-1"
-                  dir="ltr"
-                  ><app-star-rating
-                    [rating]="book.ratingsAverage"
-                  ></app-star-rating
-                ></span>
+        <owl-carousel-o [options]="customOptions">
+          <ng-container *ngFor="let book of books; let i = index">
+            <ng-template carouselSlide [id]="book._id" class="slider">
+              <div
+                class="card p-2 mx-2 shadow"
+                style="cursor: pointer; max-width: 18rem"
+              >
+                <a [routerLink]="['/show', book._id]">
+                  <img
+                    src="https://source.unsplash.com/collection/190727/600x800"
+                    class="card-img-top p-5"
+                    alt="..."
+                  />
+                </a>
+                <div class="card-body text-center">
+                  <h5 class="card-title">{{ book.bookName }}</h5>
+                  <p class="card-text" style="color: gray">
+                    {{ book.authorName }}
+                  </p>
+                  <span
+                    class="d-flex flex-row justify-content-center mb-1"
+                    dir="ltr"
+                    ><app-star-rating
+                      [rating]="book.ratingsAverage"
+                    ></app-star-rating
+                  ></span>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
       </div>
     </div>
   </div>

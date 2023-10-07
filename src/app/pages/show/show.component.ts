@@ -11,6 +11,7 @@ import { ReviewService } from 'src/app/services/review/review.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/interfaces/user';
 import { TranslocoService } from '@ngneat/transloco';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-show',
   templateUrl: './show.component.html',
@@ -55,6 +56,32 @@ export class ShowComponent implements OnInit {
     active: false,
   };
   reviews: any = [];
+
+  customOptions: OwlOptions = {
+    loop: false,
+    rtl: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 2,
+      },
+      740: {
+        items: 3,
+      },
+      940: {
+        items: 4,
+      },
+    },
+    nav: false,
+  };
 
   private route = inject(ActivatedRoute);
   id$ = this.route.params.pipe(map((params) => params['id']));

@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 import { map } from 'rxjs/internal/operators/map';
 import { Book } from 'src/app/interfaces/book';
 import { Category } from 'src/app/interfaces/category';
@@ -19,7 +20,32 @@ export class BooksComponent implements OnInit {
   categories: Category[] = [];
   arabicCategories: Category[] = [];
   englishCategories: Category[] = [];
-
+  customOptions: OwlOptions = {
+    loop: false,
+    rtl: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 2,
+      },
+      740: {
+        items: 3,
+      },
+      940: {
+        items: 4,
+      },
+    },
+    nav: false,
+  };
+  activeSlides?: SlidesOutputData;
   constructor(
     private bookService: BooksService,
     private categoryService: CategoryService
